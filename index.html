@@ -283,29 +283,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在博客中插入视频和图片能让人通俗易懂，生动形象。下面是我找到的一些方法。</p>
-<h2 id="图片插入"><a href="#图片插入" class="headerlink" title="图片插入"></a>图片插入</h2><p>Hexo有多种图片插入方式，可以将图片存放在本地引用或者将图片放在CDN上引用。</p>
-<h3 id="本地引用–绝对路径"><a href="#本地引用–绝对路径" class="headerlink" title="本地引用–绝对路径"></a>本地引用–绝对路径</h3><p>当Hexo项目中只用到少量图片时，可以将图片统一放在source/images文件夹中，通过markdown语法访问它们。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source/images/<span class="built_in">image</span>.jpg</span><br><span class="line"></span><br><span class="line">![(可以写关于图片的描述)](/images/<span class="built_in">image</span>.jpg)</span><br></pre></td></tr></table></figure>
-<p>图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p>
-<h3 id="本地引用–相对路径"><a href="#本地引用–相对路径" class="headerlink" title="本地引用–相对路径"></a>本地引用–相对路径</h3><p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。文章的目录可以通过配置_config.yml来生成。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_config.yml</span><br><span class="line"></span><br><span class="line">post_asset_folder: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>将_config.yml文件中的配置项post_asset_folder设为true后，执行命令$ hexo new post_name，在source/_posts中会生成<br>文章post_name.md和同名文件夹post_name。将图片资源放在post_name中，文章就可以使用相对路径引用图片资源了。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_posts/post_name/<span class="built_in">image</span>.jpg</span><br><span class="line"></span><br><span class="line">![](<span class="built_in">image</span>.jpg)</span><br></pre></td></tr></table></figure>
-
-<p>上述是markdown的引用方式，图片只能在文章中显示，但无法在首页中正常显示。</p>
-<p>如果希望图片在文章和首页中同时显示，可以使用标签插件语法。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_posts/post_name/<span class="built_in">image</span>.jpg</span><br><span class="line"></span><br><span class="line">&#123;% asset_img <span class="built_in">image</span>.jpg This is an <span class="built_in">image</span> %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="CDN引用"><a href="#CDN引用" class="headerlink" title="CDN引用"></a>CDN引用</h2><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。<br>比如<a href="https://cloudinary.com/" target="_blank" rel="noopener">Cloudinary</a> （梯子访问）提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。</p>
-<h2 id="视频插入"><a href="#视频插入" class="headerlink" title="视频插入"></a>视频插入</h2><p>插入视频与图片不同，这里以b站的视频为例</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=<span class="string">"（视频网址）"</span> scrolling=<span class="string">"no"</span> border=<span class="string">"0"</span> frameborder=<span class="string">"no"</span> framespacing=<span class="string">"0"</span> allowfullscreen=<span class="string">"true"</span> <span class="built_in">width</span>=<span class="string">"100%"</span>  <span class="built_in">height</span>=<span class="string">"580"</span> quality=<span class="string">"high"</span> &gt; &lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>这样直接插入的代码手机端不能自适应，效果不完美。</strong></p>
-<p><strong>最好这样</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="string">"position: relative; width: 100%; height: 0; padding-bottom: 75%;"</span>&gt;&lt;iframe </span><br><span class="line">src=<span class="string">"//player.bilibili.com/player.html?aid=39807850&amp;cid=69927212&amp;page=1"</span> scrolling=<span class="string">"no"</span> border=<span class="string">"0"</span> </span><br><span class="line">frameborder=<span class="string">"no"</span> framespacing=<span class="string">"0"</span> allowfullscreen=<span class="string">"true"</span> style=<span class="string">"position: absolute; width: 100%; </span></span><br><span class="line"><span class="string">height: 100%; left: 0; top: 0;"</span>&gt; &lt;/iframe&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>参考于：<br>           <a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/" target="_blank" rel="noopener">https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/</a><br>           <a href="https://www.andyvj.com/2019/02/12/190213-01/" target="_blank" rel="noopener">https://www.andyvj.com/2019/02/12/190213-01/</a></p>
-
+        
       
 
  <!-- 添加版权声明 -->
@@ -568,11 +546,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。<br><br>这是我在网上找到的一个通过函数测试函数执行时间的方法，这个应该是比较原始的，可能编译器也有这个功能了。但是深入去理解一些东西还是好的，我觉得这也是我要努力的方向。<br></p>
-<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clock():捕捉从程序开始运行到clock()被调用时所耗费的时间。这个时间单位是clock tick，即“时钟打点”。</span><br><span class="line">常数CLK_TCK:机器时钟每秒所走的时钟打点数。</span><br></pre></td></tr></table></figure>
-<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">clock_t</span> start, stop;<span class="comment">//clock_t是clock()函数返回的变量类型</span></span><br><span class="line"><span class="keyword">double</span> duration;<span class="comment">//记录函数运行时间，以秒为单位</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintN</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//不在测试范围内的准备工作写在clock()调用之前</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PrintN</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (N) &#123;</span><br><span class="line">		PrintN(N - <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; N &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line"></span><br><span class="line">	start = clock();</span><br><span class="line">	PrintN(N);</span><br><span class="line">	stop = clock();</span><br><span class="line">	duration = ((<span class="keyword">double</span>)(stop - start)) / CLK_TCK;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; duration &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*其他不在测试范围的处理写在后面，例如输出duration*/</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这是一个递归程序，经测试递归程序略慢于普通的循环，而且当N大于等于100000时递归程序崩溃了，栈溢出了。<br><br>因此尽管递归有它的优点，但选择递归时要慎重。<br></p>
-
+        <p>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。
+        
       
 
  <!-- 添加版权声明 -->
@@ -659,20 +634,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是我的个人博客  欢迎<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>这是我的个人博客  欢迎
+        
       
 
  <!-- 添加版权声明 -->
