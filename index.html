@@ -297,7 +297,7 @@
 <p>如果希望图片在文章和首页中同时显示，可以使用标签插件语法。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_posts/post_name/<span class="built_in">image</span>.jpg</span><br><span class="line"></span><br><span class="line">&#123;% asset_img <span class="built_in">image</span>.jpg This is an <span class="built_in">image</span> %&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="CDN引用"><a href="#CDN引用" class="headerlink" title="CDN引用"></a>CDN引用</h2><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。<br>比如[Cloudinary]（<a href="https://cloudinary.com/）（好像要梯子）提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。" target="_blank" rel="noopener">https://cloudinary.com/）（好像要梯子）提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。</a></p>
+<h2 id="CDN引用"><a href="#CDN引用" class="headerlink" title="CDN引用"></a>CDN引用</h2><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。<br>比如<a href="https://cloudinary.com/" target="_blank" rel="noopener">Cloudinary</a> （梯子访问）提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。</p>
 <h2 id="视频插入"><a href="#视频插入" class="headerlink" title="视频插入"></a>视频插入</h2><p>插入视频与图片不同，这里以b站的视频为例</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=<span class="string">"（视频网址）"</span> scrolling=<span class="string">"no"</span> border=<span class="string">"0"</span> frameborder=<span class="string">"no"</span> framespacing=<span class="string">"0"</span> allowfullscreen=<span class="string">"true"</span> <span class="built_in">width</span>=<span class="string">"100%"</span>  <span class="built_in">height</span>=<span class="string">"580"</span> quality=<span class="string">"high"</span> &gt; &lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>这样直接插入的代码手机端不能自适应，效果不完美。</strong></p>
@@ -848,6 +848,11 @@
 
 <!--页面点击小红心-->
 <script type="text/javascript" src="/love.js"></script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+</div>
 
     </div>
     <script>
