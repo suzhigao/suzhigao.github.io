@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://suzhigao66.top">
-  <title>Tag: 随想 | ☆I wana be your hero☆</title>
+  <title>最大子序列和问题 | ☆I wana be your hero☆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="I have a dream">
-<meta property="og:type" content="website">
-<meta property="og:title" content="☆I wana be your hero☆">
-<meta property="og:url" content="http://suzhigao66.top/tags/%E9%9A%8F%E6%83%B3/index.html">
+  <meta name="description" content="** 求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)&#x3D;max{0,∑(i→j)Ak}的最大值 **">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大子序列和问题">
+<meta property="og:url" content="http://suzhigao66.top/2020/02/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/index.html">
 <meta property="og:site_name" content="☆I wana be your hero☆">
-<meta property="og:description" content="I have a dream">
+<meta property="og:description" content="** 求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)&#x3D;max{0,∑(i→j)Ak}的最大值 **">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-05T12:24:25.304Z">
+<meta property="article:modified_time" content="2020-02-06T04:59:10.752Z">
 <meta property="article:author" content="男神代言人">
+<meta property="article:tag" content="-算法 -数据结构">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="☆I wana be your hero☆" type="application/atom+xml">
@@ -170,59 +173,252 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+
+<article id="post-最大子序列和" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/22/hello-world/" class="archive-article-date">
-  	<time datetime="2020-01-22T12:20:25.419Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/22/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      最大子序列和问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/02/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2020-02-05T12:24:25.304Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>** 求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值 **</p>
+<a id="more"></a>
+
+<h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><p>直接暴力求出每个子序列和的值，然后取最大的值。** 时间复杂度为O(n^3) **</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum1</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i, j, k;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	      <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">	            ThisSum = <span class="number">0</span>;</span><br><span class="line">                            <span class="keyword">for</span> (k = i; k &lt;= j; k++)</span><br><span class="line">		  ThisSum += A[k];</span><br><span class="line">                            <span class="keyword">if</span> (ThisSum &gt; MaxSum) &#123;</span><br><span class="line">		MaxSum = ThisSum;<span class="comment">//更新最大值</span></span><br><span class="line">	             &#125;</span><br><span class="line">	       &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h3><p>在算法1的基础上进行优化，** 时间复杂度为O(n^2) **</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum2</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	     ThisSum = <span class="number">0</span>;</span><br><span class="line">	     <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">	           ThisSum += A[j];</span><br><span class="line">	      &#125;</span><br><span class="line">	      <span class="keyword">if</span> (ThisSum &gt; MaxSum) &#123;</span><br><span class="line">	         MaxSum = ThisSum;</span><br><span class="line">	      &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="算法3：分而治之处理"><a href="#算法3：分而治之处理" class="headerlink" title="算法3：分而治之处理"></a>算法3：分而治之处理</h3><p>== 时间复杂度为O(n^2)的可以想办法优化成O(n㏒n) ==<br>递归分成两份，分别求每个分割后最大子列和，** 时间复杂度为 O(n<em>logn) *</em></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 返回三者中最大值*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (A &gt; B) ? ((A &gt; C) ? A : C) : ((B &gt; C) ? B : C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 分治*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DivideAndConquer</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*递归结束条件：子列只有一个数字*/</span></span><br><span class="line">	<span class="comment">// 当该数为正数时，最大子列和为其本身</span></span><br><span class="line">	<span class="comment">// 当该数为负数时，最大子列和为 0</span></span><br><span class="line">	<span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (<span class="number">0</span> &lt; a[left])</span><br><span class="line">                       <span class="keyword">return</span> a[left];</span><br><span class="line">	       <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 分别递归找到左右最大子列和*/</span></span><br><span class="line">	<span class="keyword">int</span> center = (left + right) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> MaxLeftSum = DivideAndConquer(a, left, center);</span><br><span class="line">	<span class="keyword">int</span> MaxRightSum = DivideAndConquer(a, center + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 再分别找左右跨界最大子列和*/</span></span><br><span class="line">	<span class="keyword">int</span> MaxLeftBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = center; i &gt;= left; i--) &#123;  <span class="comment">//应该从边界出发向左边找</span></span><br><span class="line">	      LeftBorderSum += a[i];</span><br><span class="line">	      <span class="keyword">if</span> (MaxLeftBorderSum &lt; LeftBorderSum)</span><br><span class="line">	         MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> MaXRightBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> RightBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = center + <span class="number">1</span>; i &lt;= right; i++) &#123;  <span class="comment">// 从边界出发向右边找</span></span><br><span class="line">	      RightBorderSum += a[i];</span><br><span class="line">	      <span class="keyword">if</span> (MaXRightBorderSum &lt; RightBorderSum)</span><br><span class="line">	          MaXRightBorderSum = RightBorderSum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">/*最后返回分解的左边最大子列和，右边最大子列和，和跨界最大子列和三者中最大的数*/</span></span><br><span class="line">           <span class="keyword">return</span> Max3(MaxLeftSum, MaxRightSum, MaXRightBorderSum + MaxLeftBorderSum);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum3</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> DivideAndConquer(a, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="算法4-在线处理"><a href="#算法4-在线处理" class="headerlink" title="算法4:在线处理"></a>算法4:在线处理</h3><p>“贪心法”，即不从整体最优上加以考虑，只做出某种意义上的局部最优解。<br>其实最大子列和与它的首部和尾部都没有关系，我们只关心它当前的大小。<br>当临时和加上当前值为负时，它对之后子列和肯定没有帮助（甚至只会让之后的和更小！），<br>我们抛弃这段临时和将它置0。** 时间复杂度为O(n) **。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum4</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> ThisSum = <span class="number">0</span>, MaxSum = <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">int</span> i;</span><br><span class="line">         <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	ThisSum += A[i];</span><br><span class="line">	<span class="keyword">if</span> (ThisSum &gt; MaxSum)</span><br><span class="line">	   MaxSum = ThisSum;</span><br><span class="line">	<span class="keyword">if</span> (ThisSum &lt; <span class="number">0</span>)</span><br><span class="line">	   ThisSum = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">        <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+ <!-- 添加版权声明 -->
+    
+
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      男神代言人
+    
+    <br>
+    <strong>本文链接：</strong>
+    <a href="http://suzhigao66.top/2020/02/05/最大子序列和/" title="最大子序列和问题" target="_blank">http://suzhigao66.top/2020/02/05/最大子序列和/</a>
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+      <br>
+      <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+    
+  </div>
+
+      <!-- 添加版权声明 -->
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1pay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-算法 -数据结构</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
 
+ 
+<!-- 开始添加阅读量-->
+
+		<span id="busuanzi_container_page_pv">
+  |  阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+<!-- 添加完成 -->
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://suzhigao.github.io/top/2020/02/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/02/02/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">友链申请</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'true' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "JyjycFelXOfRDYATX2crQgk8-gzGzoHsz",
+            app_key: "lVApYqsWdHdwFztordYVEdCi",
+            placeholder: "Just go go",
+            avatar:"retro"
+        });
+    }
+</script>
+  </section>
+
+
+  
+  
   
 
-    
+  
+
+  
+
+
+  
+
 
 
           </div>
@@ -267,9 +463,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
