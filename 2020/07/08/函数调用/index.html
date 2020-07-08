@@ -21,6 +21,8 @@
     <meta name="keywords" content="c/c++">
   
   
+    <meta name="description" content="太久没有写博客了，都是懒，拖延、、、、、、有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了...">
+  
 
   <!-- feed -->
   
@@ -402,7 +404,7 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>太久没有写博客了，都是懒，拖延、、、、、、<br>有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。<br>最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了了……<br>同时也给自己立个flag，勤学习，多总结，多写博客……</p>
+          <p>太久没有写博客了，都是懒，拖延、、、、、、<br>有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。<br>最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了了……<br>同时也给自己立个flag，勤学习，多总结，多写博客……<a id="more"></a></p>
 <p>当调用函数时，有两种向函数传递参数的方式:</p>
 <h2 id="传值调用"><a href="#传值调用" class="headerlink" title="传值调用"></a>传值调用</h2><p>该方法把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数不会影响实际参数。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* 函数声明 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">/* 局部变量定义 */</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line"> </span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"交换前，a 的值： %d\n"</span>, a );</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"交换前，b 的值： %d\n"</span>, b );</span><br><span class="line"> </span><br><span class="line">   <span class="comment">/* 调用函数来交换值 */</span></span><br><span class="line">   swap(a, b);</span><br><span class="line"> </span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"交换后，a 的值： %d\n"</span>, a );</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"交换后，b 的值： %d\n"</span>, b );</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数定义 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">   temp = x; <span class="comment">/* 保存 x 的值 */</span></span><br><span class="line">   x = y;    <span class="comment">/* 把 y 赋值给 x */</span></span><br><span class="line">   y = temp; <span class="comment">/* 把 temp 赋值给 y */</span></span><br><span class="line">  </span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -505,7 +507,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-08T22:57:11+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-08T23:00:52+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年7月8日</p>
@@ -535,7 +537,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/&title=函数调用 - ☆I wana be your hero☆&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/&title=函数调用 - ☆I wana be your hero☆&summary=太久没有写博客了，都是懒，拖延、、、、、、有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了了……同时也给自己立个flag，勤学习，多总结，多写博客……"
           
           >
           
@@ -547,7 +549,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/&title=函数调用 - ☆I wana be your hero☆&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/&title=函数调用 - ☆I wana be your hero☆&summary=太久没有写博客了，都是懒，拖延、、、、、、有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了了……同时也给自己立个flag，勤学习，多总结，多写博客……"
           
           >
           
@@ -559,7 +561,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/&title=函数调用 - ☆I wana be your hero☆&summary="
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/&title=函数调用 - ☆I wana be your hero☆&summary=太久没有写博客了，都是懒，拖延、、、、、、有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了了……同时也给自己立个flag，勤学习，多总结，多写博客……"
           
           >
           
