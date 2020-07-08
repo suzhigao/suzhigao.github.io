@@ -16,12 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>最大子序列和问题 - ☆I wana be your hero☆</title>
+    <title>Hello World - ☆I wana be your hero☆</title>
   
-    <meta name="keywords" content="算法,数据结构">
+    <meta name="keywords" content="随想">
   
   
-    <meta name="description" content="求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值">
+    <meta name="description" content="这是我的个人博客  欢迎 ">
   
 
   <!-- feed -->
@@ -349,8 +349,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/07/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
-      最大子序列和问题
+    <a href="/2020/01/23/hello-world/">
+      Hello World
     </a>
   </h1>
 
@@ -380,7 +380,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月5日</p>
+    <p>发布于：2020年1月23日</p>
   </a>
 </div>
 
@@ -404,20 +404,22 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p><strong>求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值</strong></p>
-<a id="more"></a>
+          <p>这是我的个人博客  欢迎 </p>
+<a id="more"></a> <br>Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).<br>
 
-<h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><p>直接暴力求出每个子序列和的值，然后取最大的值。<strong>时间复杂度为O(n^3)</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum1</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i, j, k;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	      <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">	            ThisSum = <span class="number">0</span>;</span><br><span class="line">                            <span class="keyword">for</span> (k = i; k &lt;= j; k++)</span><br><span class="line">		  ThisSum += A[k];</span><br><span class="line">                            <span class="keyword">if</span> (ThisSum &gt; MaxSum) &#123;</span><br><span class="line">		MaxSum = ThisSum;<span class="comment">//更新最大值</span></span><br><span class="line">	             &#125;</span><br><span class="line">	       &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br><br></p>
-<h3 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h3><p>在算法1的基础上进行优化，<strong>时间复杂度为O(n^2)</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum2</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	     ThisSum = <span class="number">0</span>;</span><br><span class="line">	     <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">	           ThisSum += A[j];</span><br><span class="line">	      &#125;</span><br><span class="line">	      <span class="keyword">if</span> (ThisSum &gt; MaxSum) &#123;</span><br><span class="line">	         MaxSum = ThisSum;</span><br><span class="line">	      &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br><br></p>
-<h3 id="算法3：分而治之处理"><a href="#算法3：分而治之处理" class="headerlink" title="算法3：分而治之处理"></a>算法3：分而治之处理</h3><p>==时间复杂度为O(n^2)的可以想办法优化成O(n㏒n)==<br>递归分成两份，分别求每个分割后最大子列和，<strong>时间复杂度为 O(n*logn)</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 返回三者中最大值*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (A &gt; B) ? ((A &gt; C) ? A : C) : ((B &gt; C) ? B : C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 分治*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DivideAndConquer</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*递归结束条件：子列只有一个数字*/</span></span><br><span class="line">	<span class="comment">// 当该数为正数时，最大子列和为其本身</span></span><br><span class="line">	<span class="comment">// 当该数为负数时，最大子列和为 0</span></span><br><span class="line">	<span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (<span class="number">0</span> &lt; a[left])</span><br><span class="line">                       <span class="keyword">return</span> a[left];</span><br><span class="line">	       <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 分别递归找到左右最大子列和*/</span></span><br><span class="line">	<span class="keyword">int</span> center = (left + right) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> MaxLeftSum = DivideAndConquer(a, left, center);</span><br><span class="line">	<span class="keyword">int</span> MaxRightSum = DivideAndConquer(a, center + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 再分别找左右跨界最大子列和*/</span></span><br><span class="line">	<span class="keyword">int</span> MaxLeftBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = center; i &gt;= left; i--) &#123;  <span class="comment">//应该从边界出发向左边找</span></span><br><span class="line">	      LeftBorderSum += a[i];</span><br><span class="line">	      <span class="keyword">if</span> (MaxLeftBorderSum &lt; LeftBorderSum)</span><br><span class="line">	         MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> MaXRightBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> RightBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = center + <span class="number">1</span>; i &lt;= right; i++) &#123;  <span class="comment">// 从边界出发向右边找</span></span><br><span class="line">	      RightBorderSum += a[i];</span><br><span class="line">	      <span class="keyword">if</span> (MaXRightBorderSum &lt; RightBorderSum)</span><br><span class="line">	          MaXRightBorderSum = RightBorderSum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">/*最后返回分解的左边最大子列和，右边最大子列和，和跨界最大子列和三者中最大的数*/</span></span><br><span class="line">           <span class="keyword">return</span> Max3(MaxLeftSum, MaxRightSum, MaXRightBorderSum + MaxLeftBorderSum);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum3</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> DivideAndConquer(a, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><br><br></p>
-<h3 id="算法4-在线处理"><a href="#算法4-在线处理" class="headerlink" title="算法4:在线处理"></a>算法4:在线处理</h3><p>“贪心法”，即不从整体最优上加以考虑，只做出某种意义上的局部最优解。<br>其实最大子列和与它的首部和尾部都没有关系，我们只关心它当前的大小。<br>当临时和加上当前值为负时，它对之后子列和肯定没有帮助（甚至只会让之后的和更小！），<br>我们抛弃这段临时和将它置0。<strong>时间复杂度为O(n)</strong>。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum4</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> ThisSum = <span class="number">0</span>, MaxSum = <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">int</span> i;</span><br><span class="line">         <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	ThisSum += A[i];</span><br><span class="line">	<span class="keyword">if</span> (ThisSum &gt; MaxSum)</span><br><span class="line">	   MaxSum = ThisSum;</span><br><span class="line">	<span class="keyword">if</span> (ThisSum &lt; <span class="number">0</span>)</span><br><span class="line">	   ThisSum = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">        <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
           
             <div class='article_footer'>
               
@@ -453,7 +455,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/07/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/>http://suzhigao66.top/2020/07/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/</a></p>
+            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/01/23/hello-world/>http://suzhigao66.top/2020/01/23/hello-world/</a></p>
           
         
       </blockquote>
@@ -504,10 +506,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-07T20:25:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-08T23:44:43+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年2月7日</p>
+    <p>更新于：2020年7月8日</p>
   </a>
 </div>
 
@@ -516,7 +518,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数据结构</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9A%8F%E6%83%B3/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>随想</p></a></div>
 
 
         
@@ -534,7 +536,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/07/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&title=最大子序列和问题 - ☆I wana be your hero☆&summary=求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/01/23/hello-world/&title=Hello World - ☆I wana be your hero☆&summary=这是我的个人博客  欢迎 "
           
           >
           
@@ -546,7 +548,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/07/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&title=最大子序列和问题 - ☆I wana be your hero☆&summary=求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/01/23/hello-world/&title=Hello World - ☆I wana be your hero☆&summary=这是我的个人博客  欢迎 "
           
           >
           
@@ -558,7 +560,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/07/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&title=最大子序列和问题 - ☆I wana be your hero☆&summary=求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值"
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/01/23/hello-world/&title=Hello World - ☆I wana be your hero☆&summary=这是我的个人博客  欢迎 "
           
           >
           
@@ -572,7 +574,7 @@
         <div class='hoverbox'>
           <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEbElEQVR42u3awXLjOAwEUP//T8/ct8oVohuindnHW+SYop5yAJB+/bEeWS8EYMFaYMGCtcBegX2F6+3G//n83fem+7z7/PR8p/dvPcCCBQsWLFiwYMHehT0ugIcP/NOBpwApSLv/8R8SWLBgwYIFCxYs2I/Apgc7PdD04PHAuWxoYg+wYMGCBQsWLFiwvwp2+0GnBX86oAcLFixYsGDBggULNhmIbxXuW40DWLBgwYIFCxYs2N8JOw4oDAv40+vToMdTg+61wAZYsGDBggULFizYR2DTgfG/+nPsARYsWLBgwYIFC/YKbLvagfbp76eNwfb5frw/WLBgwYIFCxYs2CuwaYHcwrSD7yloG9A4fn6wYMGCBQsWLFiwXwG7Dba9b9pYtIP74/8ggAULFixYsGDBgn0Edjog3iq8f7qeQrTPc3qut9fBggULFixYsGDBfhXstFBugxjt/aYvuA1+gAULFixYsGDBgr0L+wrXtIBPP0+DFFPQ9vtgwYIFCxYsWLBg78KeFuzpg24FNdqBdtsIHf8hgQULFixYsGDBgr0C2wYrtgr2tECfDtBb6OPABliwYMGCBQsWLNirsNPBb1pYTwvw0wbgFLZtZI7/gwAWLFiwYMGCBQv2EdhpAb514DSIERfu5YA7DmyABQsWLFiwYMGCfQQ23aAdLKeFeto4TPedBkbAggULFixYsGDBfhY2HUy3AZDTwn76otNGIw6KgAULFixYsGDBgv0IbBpkaIMU7QtIB+EpbN15gQULFixYsGDBgl2BbQfMxwX0MlQayEgH9WDBggULFixYsGC/AzbeIAxMTAfIW8GN7cDG2+tgwYIFCxYsWLBgr8JuNwrtmg6m2/3bYAdYsGDBggULFizYu7BbDzQdQE/vmzYiW4GN44YDLFiwYMGCBQsW7Edgpxu1A+rtwXfbWKSBELBgwYIFCxYsWLB3YdvCOS3g0xfVDsbbBuXHc4IFCxYsWLBgwYK9AtsW7G2jMX0R7SA6Daoc3xcsWLBgwYIFCxbsVdjpRttBizbosRUkac8PFixYsGDBggUL9g5sWzBvNRhbBf72QH58HrBgwYIFCxYsWLBXYLcK7m2odp+24XkssAEWLFiwYMGCBQt2FXY6sE4bg+3Axq1G4DiQAhYsWLBgwYIFC/YrYNuARVvgp+eaFvbt+cCCBQsWLFiwYMF+FnZ642mw4daLTIMh7b5gwYIFCxYsWLBg78C2qx0sbxX2p/uMoYaNBFiwYMGCBQsWLNg7sK9wtQ+0/aDTQfUU/vh5wIIFCxYsWLBgwV6FnTYEaQE9Bdhe6YsECxYsWLBgwYIF+92w08DCeBAcgp9eTxuUaUMEFixYsGDBggUL9v8Bm4K1jUwKNX0usGDBggULFixYsL8bNg1CpAX5pxuFaw0CWLBgwYIFCxYs2NXAxvZge/r99Jzpz9eSMGDBggULFixYsGCPYKfrFKZ9gBZyun/bKIAFCxYsWLBgwYK9A2vtLrBgwVpgwYK1wD66/gIS3xHFqj2OJQAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADBElEQVR42u3aQZLCMAwEwPz/07sfWMoeyYFoad+A4ETty5SU68f6c10IwIABAwYMmDEwV3G93Hjzuu7/X/3erQcMGDBgwIABMw8mffAuSBWwCrZ7PRgwYMCAAQNmLswyAC0+rwpfgaTBbVloWg8YMGDAgAED5mthugWk13WfBwwYMGDAgAEDZheiu3YDJBgwYMCAAQPm+2DiAdXmg1cbVN0A+LFJJBgwYMCAAQPmbTDdoPW0z+V6wIABAwYMGDBjYLrrVEDc/V96v7geMGDAgAEDBswYmGpA6jayqvc7FfDAgAEDBgwYMPNhTgeoXYBToNUDWA7cwIABAwYMGDBjYKqBLQ1m6QGkwTINgOUOHhgwYMCAAQPmcTC7G1UL3B20VcHbjTAwYMCAAQMGzDiYNMilBVULPgW2feBgwIABAwYMmHEw3QJ3g1u18OpBxo0tMGDAgAEDBswYmG6jpxvIqgWlDa944AYGDBgwYMCAGQOzW2D1ge4akKWDweVzgwEDBgwYMGDGwMSNnM3PpwLf6Uba8sDBgAEDBgwYMGNgdgdk1cFYul8a2E4PCMGAAQMGDBgw82BOB7rqizunAMsNNjBgwIABAwbMGJh3N6ze1fiqDvDAgAEDBgwYMHNh0gftBsTV/dOBXbeRBgYMGDBgwICZA7P9h7DAbnCsAu8GwWOTSDBgwIABAwbM42DuClKnf08hl40vMGDAgAEDBsy/gek2jNL7pNdVB3LLgRsYMGDAgAEDZixM+wbNRlIaGI8dFBgwYMCAAQNmDEx3dRtPaYDrvoi0HfDAgAEDBgwYMI+HuYrrUwWm+8T3AQMGDBgwYMCMg6kGumqDKN1n94WhdKDXHriBAQMGDBgwYB4DUw1Q3Rd5UsBqQF0ePBgwYMCAAQPm62B297v7BaK0jtsDHhgwYMCAAQPm8TCnA1k6MEuD48eSLxgwYMCAAQPmNph04HYKrBsQTzWswIABAwYMGDDzYKobdxta5cFYE+Ll92DAgAEDBgyYMTAWGDBgwIABA2bY+gXQOebwg5I5wAAAAABJRU5ErkJggg==">
           </div>
         </div>
       
@@ -580,7 +582,7 @@
       
         <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
           
-            href="https://t.me/share/url?url=http://suzhigao66.top/2020/07/05/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&text=最大子序列和问题 - ☆I wana be your hero☆"
+            href="https://t.me/share/url?url=http://suzhigao66.top/2020/01/23/hello-world/&text=Hello World - ☆I wana be your hero☆"
           
           >
           
@@ -604,16 +606,19 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/07/05/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>测试函数运行时间</p>
-                <p class='content'>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。这是我在网上找到的一个通过函数测试函数执行时间的方法，这个应该是比较原始的，可能编译器也有这个功能了。但是深入去理解一些东西还...</p>
+              <a class='prev' href='/2020/02/15/hexo%E5%8D%9A%E5%AE%A2%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>hexo博客插入图片与视频方法</p>
+                <p class='content'>在博客中插入视频和图片能让人通俗易懂，生动形象。下面是我找到的一些方法。
+
+
+图片插入Hexo有多种图片插入方式，可以将图片存放在本地引用或者将图片放在CDN上引用。
+本地引用–绝对路径当Hex...</p>
               </a>
             
             
-              <a class='next' href='/2020/07/05/%E6%84%9F%E6%82%9F%E6%9D%82%E8%B0%88/'>
-                <p class='title'>think about life<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>hello world!!!
-</p>
+              <a class='next' href='/2020/01/21/post-name/'>
+                <p class='title'>post_name<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'></p>
               </a>
             
           </div>
@@ -658,7 +663,7 @@
 
   <script>
     window.subData = {
-      title: '最大子序列和问题',
+      title: 'Hello World',
       tools: true
     }
   </script>
@@ -685,7 +690,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法1"><span class="toc-text">算法1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法2"><span class="toc-text">算法2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法3：分而治之处理"><span class="toc-text">算法3：分而治之处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法4-在线处理"><span class="toc-text">算法4:在线处理</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
     </div>
   </section>
 

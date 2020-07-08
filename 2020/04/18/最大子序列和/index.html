@@ -16,12 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>控球训练 - ☆I wana be your hero☆</title>
+    <title>最大子序列和问题 - ☆I wana be your hero☆</title>
   
-    <meta name="keywords" content="篮球">
+    <meta name="keywords" content="算法,数据结构">
   
   
-    <meta name="description" content="控球的基本功十分重要，是篮球的基础">
+    <meta name="description" content="求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值">
   
 
   <!-- feed -->
@@ -349,8 +349,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/">
-      控球训练
+    <a href="/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">
+      最大子序列和问题
     </a>
   </h1>
 
@@ -380,7 +380,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月5日</p>
+    <p>发布于：2020年4月18日</p>
   </a>
 </div>
 
@@ -404,9 +404,20 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>控球的基本功十分重要，是篮球的基础<a id="more"></a><br>下面视频需要<strong>科学上网</strong>才能观看噢</p>
-<iframe width="900" height="506" src="https://www.youtube.com/embed/aof9TGfx2C0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p><strong>求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值</strong></p>
+<a id="more"></a>
 
+<h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><p>直接暴力求出每个子序列和的值，然后取最大的值。<strong>时间复杂度为O(n^3)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum1</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i, j, k;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	      <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">	            ThisSum = <span class="number">0</span>;</span><br><span class="line">                            <span class="keyword">for</span> (k = i; k &lt;= j; k++)</span><br><span class="line">		  ThisSum += A[k];</span><br><span class="line">                            <span class="keyword">if</span> (ThisSum &gt; MaxSum) &#123;</span><br><span class="line">		MaxSum = ThisSum;<span class="comment">//更新最大值</span></span><br><span class="line">	             &#125;</span><br><span class="line">	       &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br><br></p>
+<h3 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h3><p>在算法1的基础上进行优化，<strong>时间复杂度为O(n^2)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum2</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	     ThisSum = <span class="number">0</span>;</span><br><span class="line">	     <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">	           ThisSum += A[j];</span><br><span class="line">	      &#125;</span><br><span class="line">	      <span class="keyword">if</span> (ThisSum &gt; MaxSum) &#123;</span><br><span class="line">	         MaxSum = ThisSum;</span><br><span class="line">	      &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br><br></p>
+<h3 id="算法3：分而治之处理"><a href="#算法3：分而治之处理" class="headerlink" title="算法3：分而治之处理"></a>算法3：分而治之处理</h3><p>==时间复杂度为O(n^2)的可以想办法优化成O(n㏒n)==<br>递归分成两份，分别求每个分割后最大子列和，<strong>时间复杂度为 O(n*logn)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 返回三者中最大值*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (A &gt; B) ? ((A &gt; C) ? A : C) : ((B &gt; C) ? B : C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 分治*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DivideAndConquer</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*递归结束条件：子列只有一个数字*/</span></span><br><span class="line">	<span class="comment">// 当该数为正数时，最大子列和为其本身</span></span><br><span class="line">	<span class="comment">// 当该数为负数时，最大子列和为 0</span></span><br><span class="line">	<span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (<span class="number">0</span> &lt; a[left])</span><br><span class="line">                       <span class="keyword">return</span> a[left];</span><br><span class="line">	       <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 分别递归找到左右最大子列和*/</span></span><br><span class="line">	<span class="keyword">int</span> center = (left + right) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> MaxLeftSum = DivideAndConquer(a, left, center);</span><br><span class="line">	<span class="keyword">int</span> MaxRightSum = DivideAndConquer(a, center + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 再分别找左右跨界最大子列和*/</span></span><br><span class="line">	<span class="keyword">int</span> MaxLeftBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = center; i &gt;= left; i--) &#123;  <span class="comment">//应该从边界出发向左边找</span></span><br><span class="line">	      LeftBorderSum += a[i];</span><br><span class="line">	      <span class="keyword">if</span> (MaxLeftBorderSum &lt; LeftBorderSum)</span><br><span class="line">	         MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> MaXRightBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> RightBorderSum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = center + <span class="number">1</span>; i &lt;= right; i++) &#123;  <span class="comment">// 从边界出发向右边找</span></span><br><span class="line">	      RightBorderSum += a[i];</span><br><span class="line">	      <span class="keyword">if</span> (MaXRightBorderSum &lt; RightBorderSum)</span><br><span class="line">	          MaXRightBorderSum = RightBorderSum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">/*最后返回分解的左边最大子列和，右边最大子列和，和跨界最大子列和三者中最大的数*/</span></span><br><span class="line">           <span class="keyword">return</span> Max3(MaxLeftSum, MaxRightSum, MaXRightBorderSum + MaxLeftBorderSum);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum3</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> DivideAndConquer(a, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br><br></p>
+<h3 id="算法4-在线处理"><a href="#算法4-在线处理" class="headerlink" title="算法4:在线处理"></a>算法4:在线处理</h3><p>“贪心法”，即不从整体最优上加以考虑，只做出某种意义上的局部最优解。<br>其实最大子列和与它的首部和尾部都没有关系，我们只关心它当前的大小。<br>当临时和加上当前值为负时，它对之后子列和肯定没有帮助（甚至只会让之后的和更小！），<br>我们抛弃这段临时和将它置0。<strong>时间复杂度为O(n)</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum4</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> ThisSum = <span class="number">0</span>, MaxSum = <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">int</span> i;</span><br><span class="line">         <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">	ThisSum += A[i];</span><br><span class="line">	<span class="keyword">if</span> (ThisSum &gt; MaxSum)</span><br><span class="line">	   MaxSum = ThisSum;</span><br><span class="line">	<span class="keyword">if</span> (ThisSum &lt; <span class="number">0</span>)</span><br><span class="line">	   ThisSum = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">        <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
             <div class='article_footer'>
               
@@ -442,7 +453,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/>http://suzhigao66.top/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/</a></p>
+            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/>http://suzhigao66.top/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/</a></p>
           
         
       </blockquote>
@@ -493,10 +504,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-06T22:54:39+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-08T23:48:42+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年2月6日</p>
+    <p>更新于：2020年7月8日</p>
   </a>
 </div>
 
@@ -505,7 +516,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AF%AE%E7%90%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>篮球</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AE%97%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数据结构</p></a></div>
 
 
         
@@ -523,7 +534,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/&title=控球训练 - ☆I wana be your hero☆&summary=控球的基本功十分重要，是篮球的基础"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&title=最大子序列和问题 - ☆I wana be your hero☆&summary=求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值"
           
           >
           
@@ -535,7 +546,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/&title=控球训练 - ☆I wana be your hero☆&summary=控球的基本功十分重要，是篮球的基础"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&title=最大子序列和问题 - ☆I wana be your hero☆&summary=求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值"
           
           >
           
@@ -547,7 +558,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/&title=控球训练 - ☆I wana be your hero☆&summary=控球的基本功十分重要，是篮球的基础"
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&title=最大子序列和问题 - ☆I wana be your hero☆&summary=求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值"
           
           >
           
@@ -561,7 +572,7 @@
         <div class='hoverbox'>
           <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADoUlEQVR42u3aQW7jQAwEQP//07v3BQyTTSphsjU3G5Ksqbk02H79saL1QgAOHDhwFjhwR+Be4fr3/nfPe3fdp99/d131/vT6j/sFBw4cOHDgwIE7BlcOgB+u70J3gaa/N90vOHDgwIEDBw7cVbitwNt9sa0D6Qbp9n7BgQMHDhw4cOB+CdzWfVuD0OrzwYEDBw4cOHDgwNU2XA3I6eATHDhw4MCBAwfuf4dLNzYNuGkBvn0QX9bkgwMHDhw4cODALcF1VzdgXvsc7xccOHDgwIEDB+4I3NZKXyQdUHbfY22f4MCBAwcOHDhwR+C2C+CtAWIaYKuD0LjABgcOHDhw4MCBOwK3DdgF7R5MenApGDhw4MCBAwcO3FW46gtOB5FPF8dTuHIABwcOHDhw4MCBOwK3NuALgdKNPV1sfyykwYEDBw4cOHDgfghcNdiWg+TyAaXBu/0+4MCBAwcOHDhwR+C2i90tuO1iOx2sggMHDhw4cODA/RS49I99Wy/ahd0Ouh+fCw4cOHDgwIEDdwRuXNA2Abefnz4nDujgwIEDBw4cOHBH4LYK6LQo3gqq00K6DAoOHDhw4MCBA3cErjug3ArKU6DugW0FbXDgwIEDBw4cuKtwWxtIi+g0mHcHk3FRDg4cOHDgwIEDdwwuHRh2n9MN1tuBfDzYBAcOHDhw4MCBOwqXFr1TwG6wTQNyOtgEBw4cOHDgwIG7Bjf9g171vi5EenDpe7cDMDhw4MCBAwcO3HG4ryqc0yC8VXSX9wMOHDhw4MCBA3cEbjoorH6/VRB3A24ahNcmwODAgQMHDhw4cA/BpYEwhZsWytMCfXyw4MCBAwcOHDhwR+C2guoUdDuId4vs8j7BgQMHDhw4cOCOwL2Kq/ui3YFnN8B2C+mtYhscOHDgwIEDB+4KXDf4PhV4pwX108U5OHDgwIEDBw7cNbguwLRI3vrDX3pdej84cODAgQMHDtw1uOlaGxA2QasBdlxAgwMHDhw4cODAHYV7hat6/xSy+54pTPl7cODAgQMHDhy4Y3BPFdTTwng6SF3/fXDgwIEDBw4cuKNw3SA73dD099KgHAdocODAgQMHDhy4Xwo3HVB++v6rDvzt9+DAgQMHDhw4cL8ErjswfKponhbR5f2CAwcOHDhw4MAdhUsL6e6qwmwdbFpYlwMwOHDgwIEDBw7cN8FNC+N0cDgdWKYFeDrQBAcOHDhw4MCBuwJnNYM7AnDgwIGzwIH73vUXCItzaWO4plYAAAAASUVORK5CYII=">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEZ0lEQVR42u3aQY4jMQgF0Nz/0jP7lqLAB7s6reddEsWFX3kBiNc/68h6IQAL1gILFqwF9grsK1xvN/7x+7v/dfd593s1vurzpx5gwYIFCxYsWLBg78KWE+DmgT8F3AVIQab7ly8SWLBgwYIFCxYs2Edg08CqAXUDjxvOw4Im9gALFixYsGDBggX7VbDbB+0m/GmDHixYsGDBggULFizYpBDYOvBW4QAWLFiwYMGCBQv2O2HbAwoPJ+inG91rAxtgwYIFCxYsWLBgj8CmQH/1c+wBFixYsGDBggUL9grsdH1K/LcS9LQw6D5/7AEWLFiwYMGCBQv2CmyaIHcbzOkARhe+us+x84MFCxYsWLBgwYL9FbBbB9o68FZhsXUBypMwYMGCBQsWLFiwYFdhuw3iLZi0Ib71wqdxvf0eLFiwYMGCBQsW7K+C3S4kthrQ3YGS9EWWnwcWLFiwYMGCBQv2CuwrXGkinYKlcZ2KEyxYsGDBggULFuyzsNXEepqITxvp04b2tBAqFzxgwYIFCxYsWLBgr8B2G9hdwLQw2GqsVy/E9AKABQsWLFiwYMGCfRa2WzBsDWJ0DzwtcNIL0R7YAAsWLFiwYMGCBXsEtgs0Haw4nqCHDfFjAxtgwYIFCxYsWLBgj8B2G9DTAY9pozwtHLr7di8SWLBgwYIFCxYs2LuwKUQK132B3Rc83X88KAIWLFiwYMGCBQv2Edhuwn1r8GOrYJk27uMCASxYsGDBggULFuwqbDnxbTaaTyX8aUHQvShxAQUWLFiwYMGCBQv2Cuy04b09CFH93B3cOBUnWLBgwYIFCxYs2GdhU6itwYsUehpfN/6PFxAsWLBgwYIFCxbsFditA00Liun/0oZ2ut/HAgEsWLBgwYIFCxbsVdhpgl8F2ioQtguLdCAELFiwYMGCBQsW7F3YaeK81YhOC4WtgY/phQALFixYsGDBggV7F7Y6yNAeXAhhpoXJduLffi5YsGDBggULFizYq7DpAEYVrvpCtvbbAu3GDxYsWLBgwYIFC/YObAq4laCnhUE6CJK+mPL/wIIFCxYsWLBgwV6B3Rqg6Da+txL7dL+tC1Ie2AALFixYsGDBggV7BDZtYFcDOTWw8VghMB3YAAsWLFiwYMGCBbsKmzaip/BbBUaa2K816MGCBQsWLFiwYME+Crs1gJw2mNMXmzbWqxekPbABFixYsGDBggUL9gjsdE0by1uJfbfh3o2nvD9YsGDBggULFizYK7CvcE0PtH3QbqO6C18+D1iwYMGCBQsWLNirsN2CIE2guwDbK32RYMGCBQsWLFiwYH83bHdgod0IDsGr36cFSjpADRYsWLBgwYIFC/ZvwaYFw/Q5XfDphfk4sAEWLFiwYMGCBQv2K2DTgYc0IX+6ULhWIIAFCxYsWLBgwYJdHdjYCixtjKdxTguT45MwYMGCBQsWLFiwYEuw3TVNzKeN7LSAmDbIPz4HLFiwYMGCBQsW7BVYa3eBBQvWAgsWrAX26PoPCD4O8kE18ugAAAAASUVORK5CYII=">
           </div>
         </div>
       
@@ -569,7 +580,7 @@
       
         <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
           
-            href="https://t.me/share/url?url=http://suzhigao66.top/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/&text=控球训练 - ☆I wana be your hero☆"
+            href="https://t.me/share/url?url=http://suzhigao66.top/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/&text=最大子序列和问题 - ☆I wana be your hero☆"
           
           >
           
@@ -593,20 +604,17 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/07/05/%E6%84%9F%E6%82%9F%E6%9D%82%E8%B0%88/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>think about life</p>
-                <p class='content'>hello world!!!
-</p>
+              <a class='prev' href='/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>测试函数运行时间</p>
+                <p class='content'>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。这是我在网上找到的一个通过函数测试函数执行时间的方法，这个应该是比较原始的，可能编译器也有这个功能了。但是深入去理解一些东西还...</p>
               </a>
             
             
-              <a class='next' href='/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/'>
-                <p class='title'>友链申请<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>欢迎加入友链，互相学习，一起变强 多谢指导 
+              <a class='next' href='/2020/03/24/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/'>
+                <p class='title'>控球训练<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>控球的基本功十分重要，是篮球的基础下面视频需要科学上网才能观看噢
 
-
-友链声明1.友链前麻烦也将本站设为友链，谢谢!2.本站会定期清理无法访问的友链，如果更换了链接信息请至评论区留言，谢谢合作！
-申请方式先将本站的...</p>
+</p>
               </a>
             
           </div>
@@ -651,7 +659,7 @@
 
   <script>
     window.subData = {
-      title: '控球训练',
+      title: '最大子序列和问题',
       tools: true
     }
   </script>
@@ -667,6 +675,20 @@
     
 
 
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法1"><span class="toc-text">算法1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法2"><span class="toc-text">算法2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法3：分而治之处理"><span class="toc-text">算法3：分而治之处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法4-在线处理"><span class="toc-text">算法4:在线处理</span></a></li></ol>
+    </div>
+  </section>
 
 
   

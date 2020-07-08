@@ -16,12 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>友链申请 - ☆I wana be your hero☆</title>
+    <title>测试函数运行时间 - ☆I wana be your hero☆</title>
   
-    <meta name="keywords" content="hexo">
+    <meta name="keywords" content="c/c++">
   
   
-    <meta name="description" content="欢迎加入友链，互相学习，一起变强 多谢指导 ">
+    <meta name="description" content="时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。">
   
 
   <!-- feed -->
@@ -349,8 +349,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/">
-      友链申请
+    <a href="/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
+      测试函数运行时间
     </a>
   </h1>
 
@@ -380,7 +380,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月5日</p>
+    <p>发布于：2020年5月1日</p>
   </a>
 </div>
 
@@ -404,18 +404,10 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p><strong>欢迎加入友链，互相学习，一起变强</strong><br><br> <strong>多谢指导</strong> <br></p>
-<a id="more"></a>
-
-<h2 id="友链声明"><a href="#友链声明" class="headerlink" title="友链声明"></a>友链声明</h2><p>1.友链前麻烦也将本站设为友链，谢谢!<br><br>2.本站会定期清理无法访问的友链，如果更换了链接信息请至评论区留言，谢谢合作！<br></p>
-<h2 id="申请方式"><a href="#申请方式" class="headerlink" title="申请方式"></a>申请方式</h2><p>先将本站的友链添加到您的友链，相关信息如下（选择需要的信息）</p>
-<blockquote>
-<p>名称：Metthew’s blog<br>头像链接：<a href="https://imgchr.com/i/1YPnhR" target="_blank" rel="noopener">https://imgchr.com/i/1YPnhR</a><br>网站: <a href="http://suzhigao66.top/">http://suzhigao66.top/</a><br>描述：小白成长记</p>
-</blockquote>
-<p>然后按照以下格式在本站留言区留言，待博主为您添上友链</p>
-<blockquote>
-<p>名称：Metthew’s blog<br>邮箱: <a href="mailto:1763489853@qq.com">1763489853@qq.com</a><br>网站: <a href="http://suzhigao66.top/">http://suzhigao66.top/</a></p>
-</blockquote>
+          <p>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。<a id="more"></a><br><br>这是我在网上找到的一个通过函数测试函数执行时间的方法，这个应该是比较原始的，可能编译器也有这个功能了。但是深入去理解一些东西还是好的，我觉得这也是我要努力的方向。<br></p>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clock():捕捉从程序开始运行到clock()被调用时所耗费的时间。这个时间单位是clock tick，即“时钟打点”。</span><br><span class="line">常数CLK_TCK:机器时钟每秒所走的时钟打点数。</span><br></pre></td></tr></table></figure>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">clock_t</span> start, stop;<span class="comment">//clock_t是clock()函数返回的变量类型</span></span><br><span class="line"><span class="keyword">double</span> duration;<span class="comment">//记录函数运行时间，以秒为单位</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintN</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//不在测试范围内的准备工作写在clock()调用之前</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PrintN</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (N) &#123;</span><br><span class="line">		PrintN(N - <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; N &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line"></span><br><span class="line">	start = clock();</span><br><span class="line">	PrintN(N);</span><br><span class="line">	stop = clock();</span><br><span class="line">	duration = ((<span class="keyword">double</span>)(stop - start)) / CLK_TCK;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; duration &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*其他不在测试范围的处理写在后面，例如输出duration*/</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个递归程序，经测试递归程序略慢于普通的循环，而且当N大于等于100000时递归程序崩溃了，栈溢出了。<br><br>因此尽管递归有它的优点，但选择递归时要慎重。<br></p>
 
           
             <div class='article_footer'>
@@ -452,7 +444,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/>http://suzhigao66.top/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/</a></p>
+            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/>http://suzhigao66.top/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/</a></p>
           
         
       </blockquote>
@@ -503,10 +495,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-02T17:31:02+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-08T23:49:12+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年2月2日</p>
+    <p>更新于：2020年7月8日</p>
   </a>
 </div>
 
@@ -515,7 +507,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>hexo</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/c-c/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>c/c++</p></a></div>
 
 
         
@@ -533,7 +525,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/&title=友链申请 - ☆I wana be your hero☆&summary=欢迎加入友链，互相学习，一起变强 多谢指导 "
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/&title=测试函数运行时间 - ☆I wana be your hero☆&summary=时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。"
           
           >
           
@@ -545,7 +537,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/&title=友链申请 - ☆I wana be your hero☆&summary=欢迎加入友链，互相学习，一起变强 多谢指导 "
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/&title=测试函数运行时间 - ☆I wana be your hero☆&summary=时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。"
           
           >
           
@@ -557,7 +549,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/&title=友链申请 - ☆I wana be your hero☆&summary=欢迎加入友链，互相学习，一起变强 多谢指导 "
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/&title=测试函数运行时间 - ☆I wana be your hero☆&summary=时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。"
           
           >
           
@@ -571,7 +563,7 @@
         <div class='hoverbox'>
           <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADoklEQVR42u3aS1YjQQwEQO5/6ZkT+NHKFLaGidoZ3PWJYiGU/fXHiMYXAnDgwIEzwIE7AvcVjlfPv1ywnGf6/HSex+cFBw4cOHDgwIE7Bve4ACw31M6fgm6dFxw4cODAgQMH7ipcupHphqcH2i6A4/OCAwcOHDhw4MD9Eri2QZhexLQBCg4cOHDgwIEDB252gLTQTYNqcODAgQMHDhy4/xVuHNCGQfQ0oJ6Cn0/ywYEDBw4cOHDgluDaxuO/9jk+Lzhw4MCBAwcO3BG47dEGz9PCty2cx/OCAwcOHDhw4MAdgUsD47RBOD1QHSAPG6l1kg8OHDhw4MCBA/chuGng+xR0C3b7RcOnBTw4cODAgQMHDtxVuPQFvjYATp9LAevP4MCBAwcOHDhwR+Dahub0Aqbztg3RtvH6bZIPDhw4cODAgQN3DO5pgy8NjNsC9Wnhux5QgwMHDhw4cODAHYNrJ956wS9tqE4vOr0gcODAgQMHDhy4a3Bpgfu4AVgeZHph7R8AOHDgwIEDBw7cdbgUKv3eOABehpmu8zKQBgcOHDhw4MCBOwY3LVinBfFWQNwWwGnDFBw4cODAgQMH7hrcdOLt59IDto3QOJAGBw4cOHDgwIH7MFxbmE4L4q0G6BbM+Dlw4MCBAwcOHLgjcGlDcGuD0+e3A+7x8+DAgQMHDhw4cMfg0kA4LYS/O9h0/TYAf3x+cODAgQMHDhy4I3DpAu3B0sK3fXEwvVBw4MCBAwcOHLhrcNOAuC1sU6jtBmrcWAUHDhw4cODAgTsK1zYWtwPotsBNC+G4AwwOHDhw4MCBA/dmuC2gpwdoLyy9kHQf4MCBAwcOHDhw1+C2C9r0e1vB9lagDQ4cOHDgwIEDdx2uLXynIGkgPd1HGlCDAwcOHDhw4MD9K3BbhWu60XSe9vfxhYMDBw4cOHDgwB2Bm7541774l67bzj8NpF/uDxw4cODAgQMH7ghcO9oDTBumbWH+441McODAgQMHDhy4N8F9hSMNjtOgu13n6bzxfw7gwIEDBw4cOHAfgpsWvGkAvNXobBupcYEMDhw4cODAgQN3FG5amLY/b9dLC+VpYQ8OHDhw4MCBA/fb4dqDTud7+4WDAwcOHDhw4MD9EritxuRWo7MNot/WyAQHDhw4cODAgVuGSwPptLD9qUC6LbBfzg8OHDhw4MCBA3cMrg1un77ot13IpuvGfxDgwIEDBw4cOHBH4IzZAAcOHDhwBjhwHx5/AbaVe+KjGD/dAAAAAElFTkSuQmCC">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEaUlEQVR42u3aQXLjMAwEQP//08l9UyljAIiSN82bE4uSGj4QqHl9WZesFwKwYC2wYMFaYI/Avprr3+t/3KC537t93v39t+dKv9f2AAsWLFiwYMGCBXsUtnwALn4/ffH0xarPMy1I6gEWLFiwYMGCBQv2HtithmBaiKsP/tX9Ug+wYMGCBQsWLFiwnwGbDqy7jcQUIIUECxYsWLBgwYIF+7dg0wH1VkHAggULFixYsGDB/m3YOKCwFKDoBiqmg/nHJmHAggULFixYsGDBlmCnB/3/7XPbAyxYsGDBggULFuwR2OlKG4Q0YNENZFQbj7QhePteYMGCBQsWLFiwYI/AdgfTaVCiOmBOAxrbA/pxAAQsWLBgwYIFCxbsUdjxhs2D+bQQWwXoPidYsGDBggULFizYe2C3BtspQLdB6DY2aaPQLgRYsGDBggULFizYW2C7AYr0wJ0e7LcKN2082g0CWLBgwYIFCxYs2Etgqy+09Tld1eurP4RuIcGCBQsWLFiwYME+G7a6cXcQnjYWW/dL3ystAFiwYMGCBQsWLNizsNOB83YQYxqsqP5Quu85DmyABQsWLFiwYMGCXYVNAxFTsHQg3g2MdPcHCxYsWLBgwYIF+1mw0wfqHtC3GoatgXs8aAcLFixYsGDBggV7FDa9QRVwqyHYKkS3USnfHyxYsGDBggULFuwR2K3gQxqsmIKnQN3944YDLFiwYMGCBQsW7BHYdMC9FchIAyPbgY2tgfiP/cCCBQsWLFiwYMEegZ0e+LsD6q3ARFqgamHag32wYMGCBQsWLFiwR2HTF0kLsl246cF/Gtj49TNYsGDBggULFizYo7DThmE6cE4L1AWvNi7dAT5YsGDBggULFizYM7Bbg98uRHrd9O9pQxAXHCxYsGDBggULFuxR2O7BfDroTuHTwfMUMF1gwYIFCxYsWLBgnwF71yC7OljfbhSmQWuwYMGCBQsWLFiwZ2DTAXR8o2YwuAu5vX9cCLBgwYIFCxYsWLBHYVOI7mC7+2Lpc72aqzv4BwsWLFiwYMGCBXsWdmug3H2xOBAxbFi6YOXrwIIFCxYsWLBgwR6BrQ6Epw80DUScvm4tsAEWLFiwYMGCBQv2EtgqwFVwW4GK7n2rDUn5ecGCBQsWLFiwYMHeAptCTwfe3YJOC7QVRAELFixYsGDBggV7D+xWwKEbsKgWtAs1DZTEQRWwYMGCBQsWLFiwR2Cn6/IDd7Hw299rBzrAggULFixYsGDBHoHdOiingYkUojqA7wY/qj+Ut9eDBQsWLFiwYMGCPQrbbQjuGjBvNwxpYAUsWLBgwYIFCxbss2C7B+jpA07vP4XpFvptEgYsWLBgwYIFCxbsI2G7cN3GYxqs6DYO5e+BBQsWLFiwYMGC/SjYaWC3u9/awb75f7BgwYIFCxYsWLDPgN0ObHRht8G2G5PbkzBgwYIFCxYsWLBgRwftNMCxFdy4qvDdQThYsGDBggULFizYs7DW7gILFqwFFixYC+yl6xt3Y5X657vrqwAAAABJRU5ErkJggg==">
           </div>
         </div>
       
@@ -579,7 +571,7 @@
       
         <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
           
-            href="https://t.me/share/url?url=http://suzhigao66.top/2020/07/05/%E5%8F%8B%E9%93%BE%E7%94%B3%E8%AF%B7/&text=友链申请 - ☆I wana be your hero☆"
+            href="https://t.me/share/url?url=http://suzhigao66.top/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/&text=测试函数运行时间 - ☆I wana be your hero☆"
           
           >
           
@@ -603,18 +595,20 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/07/05/%E6%8E%A7%E7%90%83%E8%AE%AD%E7%BB%83/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>控球训练</p>
-                <p class='content'>控球的基本功十分重要，是篮球的基础下面视频需要科学上网才能观看噢
-
+              <a class='prev' href='/2020/07/05/%E6%84%9F%E6%82%9F%E6%9D%82%E8%B0%88/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>think about life</p>
+                <p class='content'>hello world!!!
 </p>
               </a>
             
             
-              <a class='next' href='/2020/07/05/hello-world/'>
-                <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>这是我的个人博客  欢迎 
- Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [document...</p>
+              <a class='next' href='/2020/04/18/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/'>
+                <p class='title'>最大子序列和问题<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>求给定N个整数的序列{A1,A2,……,An},求函数 f(i,j)=max{0,∑(i→j)Ak}的最大值
+
+
+算法1直接暴力求出每个子序列和的值，然后取最大的值。时间复杂度为O(n^3)
+1...</p>
               </a>
             
           </div>
@@ -659,7 +653,7 @@
 
   <script>
     window.subData = {
-      title: '友链申请',
+      title: '测试函数运行时间',
       tools: true
     }
   </script>
@@ -686,7 +680,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#友链声明"><span class="toc-text">友链声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#申请方式"><span class="toc-text">申请方式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#demo"><span class="toc-text">demo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序"><span class="toc-text">程序</span></a></li></ol></li></ol>
     </div>
   </section>
 
