@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：c/c++ - ☆I wana be your hero☆</title>
+    <title>函数调用 - ☆I wana be your hero☆</title>
   
+    <meta name="keywords" content="c/c++,指针">
+  
+  
+    <meta name="description" content="指针听说是永远的神，今天就来接触接触神吧~">
   
 
   <!-- feed -->
@@ -331,29 +333,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -363,11 +348,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
+  <h1 class="title">
     <a href="/2020/07/14/%E6%8C%87%E9%92%88/">
       函数调用
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -403,24 +388,6 @@
           
             
               
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：667字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
 
             
           
@@ -433,318 +400,108 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>指针听说是永远的神，今天就来接触接触神吧~
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/07/14/%E6%8C%87%E9%92%88/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
           
-  <h2 class="title">
-    <a href="/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
-      函数调用
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
           
-            
+          <p>指针听说是永远的神，今天就来接触接触神吧~ <a id="more"></a><br>通过指针，可以简化一些 C 编程任务的执行，还有一些任务，如动态内存分配，没有指针是无法执行的。</p>
+<h2 id="指针介绍"><a href="#指针介绍" class="headerlink" title="指针介绍"></a>指针介绍</h2><p>指针是一个变量，其值为另一个变量的地址，即，内存位置的直接地址。<br>下面通过一个例子来简单了解下指针：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span>  var1;</span><br><span class="line">	<span class="keyword">char</span> var2[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"var1 变量的地址： %p\n"</span>, &amp;var1);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"var2 变量的地址： %p\n"</span>, &amp;var2);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<blockquote>
+<p>var1 变量的地址： 008FFAC4<br>var2 变量的地址： 008FFAB0</p>
+</blockquote>
+<h2 id="指针的算术运算"><a href="#指针的算术运算" class="headerlink" title="指针的算术运算"></a>指针的算术运算</h2><p>指针是一个用数值表示的地址，所以指针有4种算术运算：++、–、+、-。</p>
+<ul>
+<li>指针的每一次递增，是指向下一个元素的存储单元。</li>
+<li>指针的每一次递减，是指向前一个元素的存储单元。</li>
+<li>指针在递增和递减时跳跃的字节数取决于指针所指向变量的数据类型长度，比如int是4个字节。</li>
+</ul>
+<h3 id="指针的递增运算"><a href="#指针的递增运算" class="headerlink" title="指针的递增运算"></a>指针的递增运算</h3><p>下面以指针的递增运算简单描述下指针的算术运算</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> var[] = &#123; <span class="number">10</span>,<span class="number">100</span>,<span class="number">200</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> i, * ptr;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//指针中的数组地址</span></span><br><span class="line">	ptr = var;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; MAX; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"存储地址：var[%d] = %x\n"</span>, i, ptr);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"存储值：var[%d] = %d\n"</span>, i, *ptr);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">		ptr++;<span class="comment">//移动到下一个位置</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<blockquote>
+<p>存储地址：var[0] = 4c56f568<br>存储值：var[0] = 10</p>
+</blockquote>
+<p>存储地址：var[1] = 4c56f56c<br>存储值：var[1] = 100</p>
+<p>存储地址：var[2] = 4c56f570<br>存储值：var[2] = 200</p>
+<p>因此，指针的递减运算也是一样的操作。</p>
+<h3 id="指针的比较"><a href="#指针的比较" class="headerlink" title="指针的比较"></a>指针的比较</h3><p>指针可以用关系运算符进行比较，如 ==、&lt; 和 &gt;。如果 p1 和 p2 指向两个相关的变量，比如同一个数组中的不同元素，则可对 p1 和 p2 进行大小比较。<br>例如：</p>
+<pre><code class="cpp"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span>
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">3</span>;
+
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>
+<span class="function"></span>{
+    <span class="keyword">int</span> var[] = { <span class="number">10</span>,<span class="number">100</span>,<span class="number">200</span> };
+    <span class="keyword">int</span> i = <span class="number">0</span>, * ptr;
+
+    <span class="comment">//指针中的数组地址</span>
+    ptr = var;
+    <span class="keyword">while</span>(ptr &lt;= &amp;var[MAX<span class="number">-1</span>]) <span class="comment">//如果变量指针所指向的地址小于或等于数组的最后一个元素的地址，则执行以下操作</span>
+    {
+        <span class="built_in">printf</span>(<span class="string">"存储地址：var[%d] = %x\n"</span>, i, ptr);
+        <span class="built_in">printf</span>(<span class="string">"存储值：var[%d] = %d\n"</span>, i, *ptr);
+        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;
+
+        ptr++;<span class="comment">//移动到下一个位置</span>
+        i++;
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+`
+``
+运行结果：
+&gt;存储地址：var[<span class="number">0</span>] = <span class="number">7370f</span>b58
+存储值：var[<span class="number">0</span>] = <span class="number">10</span>
+
+存储地址：var[<span class="number">1</span>] = <span class="number">7370f</span>b5c
+存储值：var[<span class="number">1</span>] = <span class="number">100</span>
+
+存储地址：var[<span class="number">2</span>] = <span class="number">7370f</span>b60
+存储值：var[<span class="number">2</span>] = <span class="number">200</span>
+</code></pre>
+
           
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月8日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：712字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>太久没有写博客了，都是懒，拖延、、、、、、<br>有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。<br>最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了了……<br>同时也给自己立个flag，勤学习，多总结，多写博客……
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
-      测试函数运行时间
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月1日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：362字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-    
-  
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://s1.ax1x.com/2020/07/08/UZY9pj.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">☆I wana be your hero☆</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:1763489853@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/07/14/%E6%8C%87%E9%92%88/>http://suzhigao66.top/2020/07/14/%E6%8C%87%E9%92%88/</a></p>
           
         
-          
-            <a href="https://github.com/suzhigao"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/5275904826/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://twitter.com/suzhigao66"
-              class="social fab fa-twitter flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -755,29 +512,222 @@
     
     
 
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='http://suzhigao.oss-cn-beijing.aliyuncs.com/2020/03/15/2e8183623f316.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='http://suzhigao.oss-cn-beijing.aliyuncs.com/2020/03/15/7ae14963833fc.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-14T17:11:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年7月14日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/c-c/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>c/c++</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8C%87%E9%92%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>指针</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/07/14/%E6%8C%87%E9%92%88/&title=函数调用 - ☆I wana be your hero☆&summary=指针听说是永远的神，今天就来接触接触神吧~"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/07/14/%E6%8C%87%E9%92%88/&title=函数调用 - ☆I wana be your hero☆&summary=指针听说是永远的神，今天就来接触接触神吧~"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/07/14/%E6%8C%87%E9%92%88/&title=函数调用 - ☆I wana be your hero☆&summary=指针听说是永远的神，今天就来接触接触神吧~"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADBUlEQVR42u3aUZLbQAgE0L3/pZMLxCUacGKcpz+tV5qZpx+K5ueX64/XDwIwYMCAAQPmDMxP8yovVHwuXefV79PzgAEDBgwYMGDuwaQHrf7+6v7lxh4OPN3f437BgAEDBgwYMGdh0o0/PZ/CTQvA8XnAgAEDBgwYMP8dTHXDaWEXB2ZgwIABAwYMGDDNAm8LrLqP7cYYGDBgwIABA+YuzFYB1T1od/Do45JIMGDAgAEDBsxfg9k60Kfct88DBgwYMGDAgDkDsxVwbQVv3feunQcMGDBgwIABcwamWyBVG1hbhdj2e8GAAQMGDBgw3w9TDbKenuvCpkBpcFdOIsGAAQMGDBgwHweTDuCkBVd3gylsOujU7uCBAQMGDBgwYD4GZjvYqj7XDdq6heD6RBUYMGDAgAED5p/DdIOrtIBLC7fpOt3GFhgwYMCAAQPmDsw0yJpe3eBsu3AEAwYMGDBgwNyF6Q7odAu57gfoNsLKA0xgwIABAwYMmHMw242m7QKu+lwasIEBAwYMGDBg7sNMB3Aeg6zhe9PgLS1YwYABAwYMGDDfB5MeaCu42wKOocCAAQMGDBgwZ2C2grJ0UKgL1W1glQePwIABAwYMGDBnYLoLdgd30v/rFm7tQScwYMCAAQMGzBmYbkE1bTRN1ysfNN0HGDBgwIABA+YMzHYDKi2stgaM3p5EggEDBgwYMGA+FmYalE3vy4HY8LnHDwUGDBgwYMCAOQ+TBmHTwm1rP9MgEAwYMGDAgAFzF2arwIoHdooNp/S5uHEFBgwYMGDAgDkDM73Shbvv7QaD6QcDAwYMGDBgwNyBmQ7kpI2rKdi08fUICQYMGDBgwIA5B5Nu6F3BWrkQCxtZ5Q8IBgwYMGDAgDkLkzaGuoXf9L3TwC0u8MCAAQMGDBgwXw9ThZoWkt1gLQ7cwIABAwYMGDBfD7MVjHXX2wr0wIABAwYMGDB3YdLC691/r4J1PywYMGDAgAED5j5Mu7GzPAC0/aHiDwMGDBgwYMCAOQPjAgMGDBgwYMAcu34DdVdiuz1DjFYAAAAASUVORK5CYII=">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
+          
+            href="https://t.me/share/url?url=http://suzhigao66.top/2020/07/14/%E6%8C%87%E9%92%88/&text=函数调用 - ☆I wana be your hero☆"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/telegram.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/07/09/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/'>
+                <p class='title'>贪心算法<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>贪心算法–☟☟ 贪心算法（贪婪算法）：是一种遵循某种规则，不断贪心选取当前最优策略的算法设计方法。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '函数调用',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
   
 
   
     
     
-  
 
-  <section class="widget tagcloud shadow desktop mobile">
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/c-c/" style="font-size: 24px; color: #555">c/c++</a> <a href="/tags/hexo/" style="font-size: 19px; color: #777">hexo</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 14px; color: #999">指针</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 19px; color: #777">算法</a> <a href="/tags/%E7%AF%AE%E7%90%83/" style="font-size: 14px; color: #999">篮球</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 14px; color: #999">随想</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 19px; color: #777">随笔</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#指针介绍"><span class="toc-text">指针介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指针的算术运算"><span class="toc-text">指针的算术运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#指针的递增运算"><span class="toc-text">指针的递增运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指针的比较"><span class="toc-text">指针的比较</span></a></li></ol></li></ol>
     </div>
   </section>
 
-
-  
 
   
 
@@ -981,6 +931,60 @@
 
 
 
+
+  
+    
+<script src="/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "JyjycFelXOfRDYATX2crQgk8-gzGzoHsz",
+    appKey: "lVApYqsWdHdwFztordYVEdCi",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
 
 
 
