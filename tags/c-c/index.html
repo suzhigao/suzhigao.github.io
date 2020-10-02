@@ -440,19 +440,16 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  在上Linux课的时候被老师提了一个问题，&lt;stdio.h&gt;和”stdio.h&gt;有什么区别？<br>  老实说，当听到这个问题的时候我心里想这不是一样的吗？学和用了这么久C语言竟然把这当成理想应当了。。其实这些细节也很能体现基础掌握得怎样，听说对于面试来说，大厂也比较倾向问这些基础内功。</p>
-<h2 id="lt-stdio-h-gt-和”stdio-h”的区别"><a href="#lt-stdio-h-gt-和”stdio-h”的区别" class="headerlink" title="&lt;stdio.h&gt;和”stdio.h”的区别"></a>&lt;stdio.h&gt;和”stdio.h”的区别</h2><p>  当预处理器发现#include指令时，会查看后面的文件名并把文件的内容包含到当前文件中，即替换源文件中的#include指令，这相当于把被包含文件的全部内容输入到源文件#include指令所在的位置。<br>  #include指令有两种形式：<br>  ① #include &lt;stdio.h&gt;<br>  ② #include “mycoce.h”<br>  第一种即&lt;&gt;告诉预处理器在标准系统目录中查找文件，第二种即””告诉预处理器首先在当前目录中（或者文件名指定的其他目录）查找文件，找不到再查找标准系统目录。</p>
-<h3 id="自写头文件"><a href="#自写头文件" class="headerlink" title="自写头文件"></a>自写头文件</h3><p>  如下写了一个头文件，命名为ps.h,存储地址如下：</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PR printf</span></span><br></pre></td></tr></table></figure>
-<p><img src="/public/img/code1.png" alt=""></p>
-<p>  那么以后我写程序的时候只要在开始包含#include “D:\PyCharm Community Edition 2020.2\ps.h”<br>  这样就可以免掉#include &lt;stdio.h&gt;，因为我已经在另一个文件中包含它了。所以比如在程序中我要输出“hhh成功了”，就可以用PR代表printf，如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"D:\PyCharm Community Edition 2020.2\ps.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PR(<span class="string">"hhh成功了"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/public/img/code2.png" alt=""></p>
-<p><img src="/public/img/code3.png" alt=""><br>  这样即可成功！</p>
-
+        <p>  在上Linux课的时候被老师提了一个问题，&lt;stdio.h&gt;和”stdio.h&gt;有什么区别？<br>  老实说，当听到这个问题的时候我心里想这不是一样的吗？学和用了这么久C语言竟然把这当成理想应当了。。其实这些细节也很能体现基础掌握得怎样，听说对于面试来说，大厂也比较倾向问这些基础内功。<br>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2020/10/02/headerFile/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
