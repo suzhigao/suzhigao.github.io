@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,9 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：c/c++ - ☆I wana be your hero☆</title>
+    <title>scanf()与scanf_s()的区别 - ☆I wana be your hero☆</title>
+  
+    <meta name="keywords" content="c/c++">
   
   
 
@@ -331,35 +331,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -369,11 +346,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
+  <h1 class="title">
     <a href="/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/">
       scanf()与scanf_s()的区别
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -409,24 +386,6 @@
           
             
               
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：345字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
 
             
           
@@ -439,628 +398,54 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="scanf-函数-："><a href="#scanf-函数-：" class="headerlink" title="scanf() 函数 ："></a>scanf() 函数 ：</h2><p>   scanf() 函数是格式化输入函数，它从标准输入设备(键盘) 读取输入的信息。<br>   其调用格式为:scanf(“&lt;格式化字符串&gt;”，&lt;地址表&gt;)。</p>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <h2 id="scanf-函数-："><a href="#scanf-函数-：" class="headerlink" title="scanf() 函数 ："></a>scanf() 函数 ：</h2><p>   scanf() 函数是格式化输入函数，它从标准输入设备(键盘) 读取输入的信息。<br>   其调用格式为:scanf(“&lt;格式化字符串&gt;”，&lt;地址表&gt;)。</p>
 <h2 id="scanf-s-函数："><a href="#scanf-s-函数：" class="headerlink" title="scanf_s()函数："></a>scanf_s()函数：</h2><p>   scanf_s() 的功能虽然与scanf() 相同，但却比 scanf() 安全，因为 scanf_s() 是针对“ scanf()在读取字符串时不检查边界，可能会造成内存泄露”这个问题设计的。</p>
 <p>   scanf_s()用于读取字符串时，必须提供一个数字以表明最多读取多少位字符，以防止溢出。</p>
 <h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><p>   （统计输入字符串中原因字母出现的个数）（调试环境：visual studio 2010  C++）</p>
    <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;CountVowel.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CountVowel</span><span class="params">(<span class="keyword">char</span> str[])</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> counter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; str[i] != <span class="string">'\0'</span> ; ++i )</span><br><span class="line">    &#123;   <span class="keyword">switch</span>(str[i])</span><br><span class="line">      &#123; <span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'e'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'i'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'o'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'u'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'A'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'E'</span>: </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'I'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'O'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'U'</span>:</span><br><span class="line">              ++counter;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> counter;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">char</span> <span class="built_in">buffer</span>[<span class="number">128</span>];                               </span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"Please input a string:\n"</span>);</span><br><span class="line"> scanf_s(<span class="string">"%s"</span> , <span class="built_in">buffer</span>,<span class="number">128</span>);     <span class="comment">/*   这里必须要有128，以表明最多读取128个字符，如果写成scanf_s("%s",buffer)，程序将无法执行到底，且编译器会提示“Unhandled exception at 0xfefefefe in array.exe:0xC0000005: Access tion.” 。当然在安全性要求不高的情况下，不 一定非要用scanf_s()函数，可用scanf("%s",buffer)代替。  */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d vowels appear in your string.\n"</span>,CountVowel(<span class="built_in">buffer</span>));</span><br><span class="line">  system(<span class="string">"pause"</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
           
-  <h2 class="title">
-    <a href="/2020/10/02/headerFile/">
-      头文件基础讲解（C语言）
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年10月2日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：429字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>在上Linux课的时候被老师提了一个问题，&lt;stdio.h&gt;和&quot;stdio.h&quot;有什么区别？</code></pre><p>  老实说，当听到这个问题的时候我心里想这不是一样的吗？学和用了这么久C语言竟然把这当成理想应当了。。其实这些细节也很能体现基础掌握得怎样，听说对于面试来说，大厂也比较倾向问这些基础内功。<br>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/10/02/headerFile/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/07/16/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
-      C与内存管理
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月16日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：854字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：3分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在任何程序设计环境和语言中，内存管理都十分重要。这本文章基于C语言的基础上讲解内存管理。
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/07/16/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/07/14/%E6%8C%87%E9%92%88/">
-      指针
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月14日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.2k字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：5分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>指针听说是永远的神，今天就来接触接触神吧~
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/07/14/%E6%8C%87%E9%92%88/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
-      函数调用
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年7月8日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：712字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>太久没有写博客了，都是懒，拖延、、、、、、<br>有大牛曾说过，不管是技术还是知识，重要的是输出而不是输入。只有懂得用的知识才是自己的。写博客是一个很好的检验过程，能够通俗易懂地阐述自己所学的知识，既可以教会别人，也可以使自己得到快速提高。<br>最近在复习了一下c语言的一些基础知识，总结了一些简单的知识点，基础真的太重要了了了了……<br>同时也给自己立个flag，勤学习，多总结，多写博客……
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/07/08/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
-      测试函数运行时间
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月1日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：362字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-    
-  
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://s1.ax1x.com/2020/07/08/UZY9pj.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">☆I wana be your hero☆</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:1763489853@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=http://suzhigao66.top/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/>http://suzhigao66.top/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/</a></p>
           
         
-          
-            <a href="https://github.com/suzhigao"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/5275904826/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://twitter.com/suzhigao66"
-              class="social fab fa-twitter flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -1071,29 +456,222 @@
     
     
 
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='http://suzhigao.oss-cn-beijing.aliyuncs.com/2020/03/15/2e8183623f316.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='http://suzhigao.oss-cn-beijing.aliyuncs.com/2020/03/15/7ae14963833fc.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-30T16:06:11+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月30日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/c-c/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>c/c++</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/&title=scanf()与scanf_s()的区别 - ☆I wana be your hero☆&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/&title=scanf()与scanf_s()的区别 - ☆I wana be your hero☆&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/&title=scanf()与scanf_s()的区别 - ☆I wana be your hero☆&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEZklEQVR42u3aQXJiMQwFQO5/6cwBpij0JNn8pFq7T8DYbRaSotePOBIvBGDBCrBgwQqwV2BfzfhvweL7q39/97wG0DzHx/2DBQsWLFiwYMGCvQo73dC7jaXv23qunmt6kWDBggULFixYsGCfAbudwE8T/O762xdXXg8sWLBgwYIFCxbsr4TdTtjTfVX3nRYMYMGCBQsWLFiwYP8m7HQAYgqZFhzd84EFCxYsWLBgwYJ9Jux2An37YN3BkcdNwoAFCxYsWLBgwYItwaYxbXw//bntARYsWLBgwYIFC/YK7DTSAYpu4zx9X1oYrHmABQsWLFiwYMGCvQLbTZDTwYxuY3qrsV19vXt+sGDBggULFixYsN+F3dpQd53pvtL11xv5YMGCBQsWLFiwYK/CbjWSqwn37QR/u2H+9nWwYMGCBQsWLFiwV2DThnKaOG9Bpg3v0wUOWLBgwYIFCxYs2O/C3kq8u8CnGtjTH8pbB7BgwYIFCxYsWLBXYKsfTA+SDlZsD4Kk51rbP1iwYMGCBQsWLNgrsGlD+TRkd52twY/pucCCBQsWLFiwYMF+F3bagN4e6Nhad7r+x3OCBQsWLFiwYMGCvQK7NWAxHciYXmi1wNkqjMb/QQALFixYsGDBggV7FHZrY6cPWm5Ef/hhTBv7YMGCBQsWLFiwYO/CphvqNqq3CpLuwEZ3wKO8X7BgwYIFCxYsWLBXYLsN5bThPG2Idxvm08Z6XCiBBQsWLFiwYMGC/QrsdONbr08T+O73dAsdsGDBggULFixYsHdhq8BbB5s2wLfgXmGU9wcWLFiwYMGCBQv2Kuy0AJi+r5yALw2ITBvvb88DFixYsGDBggUL9grsNCHfKgjSRH6rMb4+eAIWLFiwYMGCBQv2EbAp2LShPIXfAmpfHFiwYMGCBQsWLNgrsNsN7nRgYmvAYnswo+sCFixYsGDBggUL9i5sdcG0EEgHJrrrpheQfn/c6AYLFixYsGDBggV7FLYL0i0A0kGJUwl9d0Dl477BggULFixYsGDBXoHtHvhnGNsXunXx48EQsGDBggULFixYsFdguwfrJuLTxvIUMC080v2ABQsWLFiwYMGCvQtb/uBSop1+PoWYDmh0CyGwYMGCBQsWLFiwz4I9PYAxbYx3L25aiIwLBLBgwYIFCxYsWLArsN2CIY0uWHpBr6UoFxhgwYIFCxYsWLBgr8BOI204T5+7BUe3QGkPbIAFCxYsWLBgwYI9CjtNmNNEP4VPG+vTgiQtgD4ObIAFCxYsWLBgwYI9CpsWBNUEegp/qnCZXiRYsGDBggULFizYZ8FOE+gpUHdgJL3YtEAqnxcsWLBgwYIFCxbsn4LdaqBXv7fbAE+fPw5sgAULFixYsGDBgn00bHeAI4VJL657UWljHixYsGDBggULFux3YacHnIJsD3CcKoCOT8KABQsWLFiwYMGCLcF2G9LVL0wT+umFny5sygUCWLBgwYIFCxYs2COwYjfAggUrwIIFK8AejX+4lZI22xyLmgAAAABJRU5ErkJggg==">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
+          
+            href="https://t.me/share/url?url=http://suzhigao66.top/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/&text=scanf()与scanf_s()的区别 - ☆I wana be your hero☆"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/telegram.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/10/28/P1093%20%E5%A5%96%E5%AD%A6%E9%87%91%E9%97%AE%E9%A2%98/'>
+                <p class='title'>奖学金问题<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>C++中的sort()排序函数用法简单介绍sort(first_pointer,first_pointer+n,cmp) :该函数可以给数组、链表、向量排序。实现原理：sort不是简单的快速排序...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'scanf()与scanf_s()的区别',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
   
 
   
     
     
-  
 
-  <section class="widget tagcloud shadow desktop mobile">
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/ACM/" style="font-size: 14px; color: #999">ACM</a> <a href="/tags/c-c/" style="font-size: 24px; color: #555">c/c++</a> <a href="/tags/hexo/" style="font-size: 17.33px; color: #828282">hexo</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 14px; color: #999">内存管理</a> <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 14px; color: #999">分享</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 14px; color: #999">指针</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20.67px; color: #6c6c6c">算法</a> <a href="/tags/%E7%AF%AE%E7%90%83/" style="font-size: 14px; color: #999">篮球</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 14px; color: #999">计算机基础</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 14px; color: #999">随想</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 17.33px; color: #828282">随笔</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#scanf-函数-："><span class="toc-text">scanf() 函数 ：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scanf-s-函数："><span class="toc-text">scanf_s()函数：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例："><span class="toc-text">实例：</span></a></li></ol>
     </div>
   </section>
 
-
-  
 
   
 
@@ -1297,6 +875,60 @@
 
 
 
+
+  
+    
+<script src="/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "JyjycFelXOfRDYATX2crQgk8-gzGzoHsz",
+    appKey: "lVApYqsWdHdwFztordYVEdCi",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
 
 
 

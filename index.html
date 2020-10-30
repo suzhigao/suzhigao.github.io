@@ -564,10 +564,114 @@
         
           
         
+          
+        
       
     
     
       
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2020/10/30/scanf()%E4%B8%8Escanf_s()%E7%9A%84%E5%8C%BA%E5%88%AB/">
+      scanf()与scanf_s()的区别
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
+    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
+    <p>Su</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月30日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：345字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：1分钟</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="scanf-函数-："><a href="#scanf-函数-：" class="headerlink" title="scanf() 函数 ："></a>scanf() 函数 ：</h2><p>   scanf() 函数是格式化输入函数，它从标准输入设备(键盘) 读取输入的信息。<br>   其调用格式为:scanf(“&lt;格式化字符串&gt;”，&lt;地址表&gt;)。</p>
+<h2 id="scanf-s-函数："><a href="#scanf-s-函数：" class="headerlink" title="scanf_s()函数："></a>scanf_s()函数：</h2><p>   scanf_s() 的功能虽然与scanf() 相同，但却比 scanf() 安全，因为 scanf_s() 是针对“ scanf()在读取字符串时不检查边界，可能会造成内存泄露”这个问题设计的。</p>
+<p>   scanf_s()用于读取字符串时，必须提供一个数字以表明最多读取多少位字符，以防止溢出。</p>
+<h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><p>   （统计输入字符串中原因字母出现的个数）（调试环境：visual studio 2010  C++）</p>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;CountVowel.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CountVowel</span><span class="params">(<span class="keyword">char</span> str[])</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> counter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; str[i] != <span class="string">'\0'</span> ; ++i )</span><br><span class="line">    &#123;   <span class="keyword">switch</span>(str[i])</span><br><span class="line">      &#123; <span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'e'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'i'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'o'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'u'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'A'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'E'</span>: </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'I'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'O'</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'U'</span>:</span><br><span class="line">              ++counter;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> counter;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">char</span> <span class="built_in">buffer</span>[<span class="number">128</span>];                               </span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"Please input a string:\n"</span>);</span><br><span class="line"> scanf_s(<span class="string">"%s"</span> , <span class="built_in">buffer</span>,<span class="number">128</span>);     <span class="comment">/*   这里必须要有128，以表明最多读取128个字符，如果写成scanf_s("%s",buffer)，程序将无法执行到底，且编译器会提示“Unhandled exception at 0xfefefefe in array.exe:0xC0000005: Access tion.” 。当然在安全性要求不高的情况下，不 一定非要用scanf_s()函数，可用scanf("%s",buffer)代替。  */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d vowels appear in your string.\n"</span>,CountVowel(<span class="built_in">buffer</span>));</span><br><span class="line">  system(<span class="string">"pause"</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
         
       
         
@@ -1384,110 +1488,6 @@
       
     </div>
     
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
-      测试函数运行时间
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
-    <p>Su</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月1日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：362字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间就是金钱，效率就是生命！程序的好坏一定程度上取决于它的执行效率。
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/01/%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
       
     
   </section>
