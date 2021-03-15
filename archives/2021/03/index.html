@@ -481,13 +481,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：816字</p>
+      <p>字数：1.1k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：3分钟</p>
+      <p>时长：4分钟</p>
     </a>
   </div>
 
@@ -512,15 +512,35 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="为什么Java只有值传递？？"><a href="#为什么Java只有值传递？？" class="headerlink" title="为什么Java只有值传递？？"></a>为什么Java只有值传递？？</h3><p><strong>值传递：</strong> 调用函数时，将实参复制一份传给函数，函数中修改参数时不会影响实参<br><br><strong>引用传递</strong>：调用函数时，将实参的地址传给函数，函数中修改参数会影响实参。<br><br><strong>判断是值传递还是引用传递的标准，和传递参数的类型是没有关系的。</strong></p>
+<h3 id="Java中的栈与堆"><a href="#Java中的栈与堆" class="headerlink" title="Java中的栈与堆"></a>Java中的栈与堆</h3><ul>
+<li><p>栈：存放基本类型的局部变量，与对象的引用，方法执行结束后栈中的变量和对象的引用消失。</p>
+</li>
+<li><p>堆：存放对象的实例。java中的数组和new出来的对象都是放在堆中的，堆中的对象没有任何引用(就是在栈中没有任何一个变量指向该对象)时会被GC回收。</p>
+</li>
+</ul>
+<h4 id="1-值传递"><a href="#1-值传递" class="headerlink" title="1-值传递"></a>1-值传递</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class TestNum &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int num &#x3D; 3;</span><br><span class="line">        System.out.println(&quot;修改前的num值:&quot;+num);</span><br><span class="line">        changeValue(num);</span><br><span class="line">        System.out.println(&quot;修改后的num值:&quot;+num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void changeValue(int num) &#123;</span><br><span class="line">        num &#x3D; 5;</span><br><span class="line">        System.out.println(&quot;形参num值:&quot;+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修改前的num值:3</span><br><span class="line">形参num值:5</span><br><span class="line">修改后的num值:3</span><br></pre></td></tr></table></figure>
+<p>值传递不是简单的把实参传递给形参，而是，实参建立了一个副本，然后把副本传递给了形参。图中num是实参，然后创建了一个副本temp，把它传递给形参value，修改value值对实参num没有任何影响。</p>
+<p><img src="https://image-static.segmentfault.com/264/295/2642951147-5e15dfbff00dc_articlex" alt="image"></p>
+<h4 id="2-引用传递"><a href="#2-引用传递" class="headerlink" title="2-引用传递"></a>2-引用传递</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package java_learn;</span><br><span class="line"></span><br><span class="line">class User &#123;</span><br><span class="line">    private int age;</span><br><span class="line">    private String name;</span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public User(int age, String name) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public User() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;User&#123;&quot; +</span><br><span class="line">                &quot;age&#x3D;&quot; + age +</span><br><span class="line">                &quot;, name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TestUser &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        User user &#x3D; new User(18, &quot;zhangsan&quot;);</span><br><span class="line">        System.out.println(&quot;修改对象前:&quot;+user);</span><br><span class="line">        changeUser(user);</span><br><span class="line">        System.out.println(&quot;修改对象后:&quot;+user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void changeUser(User user) &#123;</span><br><span class="line">        user.setAge(20);</span><br><span class="line">        user.setName(&quot;lisi&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改对象前:User&#123;age&#x3D;18, name&#x3D;&#39;zhangsan&#39;&#125;</span><br><span class="line">修改对象后:User&#123;age&#x3D;20, name&#x3D;&#39;lisi&#39;&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现，传过去的user对象，属性值被改变了。由于，user对象存放在堆里边，其引用存放在栈里边，其参数传递图如下。<br><br>user是对象的引用，为实参，然后创建一个副本temp，把它传递给形参user1。但是，他们实际操作的都是堆内存中的同一个User对象。因此，对象内容的修改也会体现到实参user上。<br><img src="https://image-static.segmentfault.com/253/145/2531458419-5e15dfc07bc3d_articlex" alt="image"></p>
+<h3 id="3-传递类型是String类型"><a href="#3-传递类型是String类型" class="headerlink" title="3-传递类型是String类型"></a>3-传递类型是String类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class TestStr &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str &#x3D; new String(&quot;zhangsan&quot;);</span><br><span class="line">        System.out.println(&quot;字符串修改前:&quot;+str);</span><br><span class="line">        changeStr(str);</span><br><span class="line">        System.out.println(&quot;字符串修改后:&quot;+str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void changeStr(String str) &#123;</span><br><span class="line">        str &#x3D; &quot;lisi&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">字符串修改前:zhangsan</span><br><span class="line">字符串修改后:zhangsan</span><br></pre></td></tr></table></figure>
+<p>String也是引用类型，为什么在这又不变了呢？传递参数是引用类型，并不代表就是引用传递，其实它还是值传递。<br><br>图中，str是对象 zhangsan的引用，为实参，然后创建了一个副本temp，把它传递给了形参str1。此时，创建了一个新的对象 lisi ，形参str1指向这个对象，但是原来的实参str还是指向zhangsan。因此，形参内容的修改并不会影响到实参内容。<br><br>所以，两次打印结果都是zhangsan。<br><img src="https://image-static.segmentfault.com/368/622/3686221859-5e15dfc103afb_articlex" alt="image"></p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>值传递，不论传递的参数类型是值类型还是引用类型，都会在调用栈上创建一个形参的副本。不同的是，对于值类型来说，复制的就是整个原始值的复制。而对于引用类型来说，由于在调用栈中只存储对象的引用，因此复制的只是这个引用，而不是原始对象。</p>
+<p>最后，再次强调一下，传递参数是引用类型，或者说是对象时，并不代表它就是引用传递。引用传递不是用来形容参数的类型的，不要被“引用”这个词本身迷惑了。这就如同我们生活中说的地瓜不是瓜，而是红薯一样。</p>
+<ul>
+<li>参数传递时，是拷贝实参的副本，然后传递给形参。（值传递）</li>
+<li>在函数中，只有修改了实参所指向的对象内容，才会影响到实参。</li>
+</ul>
+
       
     </div>
     
-      
-        <div class="button readmore">
-          <a href="/2021/03/15/%E4%B8%BA%E4%BB%80%E4%B9%88Java%E5%8F%AA%E6%9C%89%E5%80%BC%E4%BC%A0%E9%80%92%EF%BC%9F%EF%BC%9F/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
       
     
   </section>
