@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#0.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>正则表达式 - ☆I wana be your hero☆</title>
+  
+    <meta name="keywords" content="正则,JavaScript">
+  
+  
+    <meta name="description" content="正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法,以及 String 的 match、matchAll、replace、search 和 split 方法。正则表达式可...">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://s1.ax1x.com/2020/07/08/UZDJER.png">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            BLOG <b><sup style='color:#3AA757'>0.0</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2022/01/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+      正则表达式
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://suzhigao.github.io/" target="_blank" rel="nofollow noopener">
+    <img src="https://s1.ax1x.com/2020/07/08/UV77Y8.jpg">
+    <p>Su</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年1月7日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法,<br>以及 String 的 match、matchAll、replace、search 和 split 方法。<strong>正则表达式可用于所有文本搜索和文本替换的操作</strong>。<br>==那就开始吧~== </p>
+<a id="more"></a>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><code>/正则表达式主体/修饰符(可选)</code></p>
+<h3 id="使用字符串方法"><a href="#使用字符串方法" class="headerlink" title="使用字符串方法"></a>使用字符串方法</h3><p>在 JavaScript 中，正则表达式通常用于两个字符串方法 : search() 和 replace()。</p>
+<h4 id="search-方法"><a href="#search-方法" class="headerlink" title="search()方法"></a>search()方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * search</span></span><br><span class="line"><span class="comment"> * 搜索字符串中是否含有指定内容,返回子串的起始位置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"hello abc aec aqc"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="regexp">/a[beq]c/</span>));</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>6</code></p>
+<h4 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * replace 替换</span><br><span class="line"> *&#x2F;</span><br><span class="line">var p &#x3D; &#39;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&#39;;</span><br><span class="line">console.log(p.replace(&quot;fox&quot;,&quot;Monkey&quot;));</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>The quick brown Monkey jumps over the lazy dog. If the dog reacted, was it really lazy?</code></p>
+<h4 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    * split(): 切片，除去该参数,将分割后的字符串存储到数组中的String方法中</span><br><span class="line">    *&#x2F;</span><br><span class="line">   var str &#x3D; &quot;1z3v3f4n5i6s&quot;;</span><br><span class="line">   var result &#x3D; str.split(&#x2F;[0-9]&#x2F;);</span><br><span class="line">   console.log(result);</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>[&#39;&#39;, &#39;z&#39;, &#39;v&#39;, &#39;f&#39;, &#39;n&#39;, &#39;i&#39;, &#39;s&#39;]</code></p>
+<h4 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    * match: 可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配</span><br><span class="line">    *&#x2F; </span><br><span class="line">   var str &#x3D; &quot;The rain in SPAIN stays mainly in the plain&quot;; </span><br><span class="line">var n &#x3D; str.match(&#x2F;ain&#x2F;g);</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>ain,ain,ain</code></p>
+<h3 id="使用-RegExp-对象"><a href="#使用-RegExp-对象" class="headerlink" title="使用 RegExp 对象"></a>使用 RegExp 对象</h3><p>在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象。</p>
+<h4 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    * test()：检测一个字符串是否匹配某个模式</span><br><span class="line">    *&#x2F;</span><br><span class="line">var patt1&#x3D;new RegExp(&quot;e&quot;);</span><br><span class="line">   document.write(patt1.test(&quot;The best things in life are free&quot;));</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>true</code></p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * exec() </span><br><span class="line"> * 方法用于检索字符串中的正则表达式的匹配</span><br><span class="line"> * 该函数返回一个数组，其中存放匹配的结果,如果未找到匹配，则返回值为 null。</span><br><span class="line">*&#x2F;</span><br><span class="line">var patt1&#x3D;new RegExp(&quot;e&quot;);</span><br><span class="line">document.write(patt1.exec(&quot;The best things in life are free&quot;));</span><br></pre></td></tr></table></figure>
+<p>结果：<br><code>e</code></p>
+<h2 id="正则表达式修饰符"><a href="#正则表达式修饰符" class="headerlink" title="正则表达式修饰符"></a>正则表达式修饰符</h2><ul>
+<li>i : 执行对大小写不敏感的匹配。</li>
+<li>g : 执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）</li>
+<li>m : 执行多行匹配</li>
+</ul>
+<h2 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h2><h3 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h3><ul>
+<li>[abc] : 查找方括号之间的任何字符</li>
+<li>[0-9] : 查找任何从 0 至 9 的数字</li>
+<li>(x|y) : 查找任何以 | 分隔的选项</li>
+</ul>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><ul>
+<li>\d : 查找数字</li>
+<li>\s : 查找空白字符</li>
+<li>\b : 匹配单词边界</li>
+<li>\uxxxx : 查找以十六进制数 xxxx 规定的 Unicode 字符</li>
+<li>^ : 表示开头</li>
+<li>$ : 表示结尾</li>
+</ul>
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><p><strong>量词只对前一个内容起作用</strong></p>
+<ul>
+<li>n+ : 匹配任何包含至少一个 n 的字符串</li>
+<li>n* : 匹配任何包含零个或多个 n 的字符串</li>
+<li>n? : 匹配任何包含零个或一个 n 的字符串</li>
+<li>‘+’ : 至少一个</li>
+<li>‘-’ : 0个</li>
+<li>{n} ：正好出现n次</li>
+<li>{m,n} ：出现m-n次</li>
+<li>{m, } : m次以上</li>
+</ul>
+<h4 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h4><p>去除以下字符串开头与结尾空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str &#x3D; &quot;        he         llo       &quot;;</span><br><span class="line">str &#x3D; str.replace(&#x2F;^\s*|\s*$&#x2F;g,&quot;&quot;);</span><br><span class="line">console.log(str);</span><br></pre></td></tr></table></figure>
+<p><code>he         llo</code></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>测试输入数字是否为手机号码<br>思路：</li>
+</ul>
+<ol>
+<li>手机号共11位</li>
+<li>第一位为1 ：^1</li>
+<li>第二位为3-9的数字 : [3-9]</li>
+<li>第三位以后为0-9的9位数字： [0-9]{9}$<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注意^与$的使用</span><br><span class="line">        var phone &#x3D; &quot;13553597193&quot;;</span><br><span class="line">        var phoneReg &#x3D; &#x2F;^1[3-9][0-9]&#123;9&#125;$&#x2F;</span><br><span class="line">        console.log(phoneReg.test(phone));</span><br></pre></td></tr></table></figure>
+<code>true</code></li>
+</ol>
+<ul>
+<li>测试邮箱账号是否符合规则</li>
+</ul>
+<p>思路看注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * 任意字母数字下划线   .任意字符数字下划线（可选,若有.后面至少有一个）  @  任意字母数字 . 任意字母（2-5位） . 任意字母（2-5位）</span><br><span class="line"> *       \w                     (\.\w+)*                            @   [A-z0-9]      (\.[A-z]&#123;2-5&#125;)&#123;1-2&#125;</span><br><span class="line"> * 记得加上^与$</span><br><span class="line"> *&#x2F;</span><br><span class="line">emailReg &#x3D; &#x2F;^\w&#123;3,&#125;(\.\w+)*@[A-z0-9]+(\.[A-z]&#123;2,5&#125;)&#123;1,2&#125;$&#x2F;;</span><br><span class="line">var email &#x3D; &quot;165413@qq.com.cn&quot;;</span><br><span class="line">console.log(emailReg.test(email));</span><br></pre></td></tr></table></figure>
+<p><code>true</code></p>
+<p>OK~</p>
+<h6 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h6><p>菜鸟教程（<a href="https://www.runoob.com/）" target="_blank" rel="noopener">https://www.runoob.com/）</a></p>
+<p>MDN Web Docs（<a href="https://developer.mozilla.org）" target="_blank" rel="noopener">https://developer.mozilla.org）</a></p>
+<p>等等</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=http://suzhigao66.top/2022/01/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/>http://suzhigao66.top/2022/01/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='http://suzhigao.oss-cn-beijing.aliyuncs.com/2020/03/15/2e8183623f316.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='http://suzhigao.oss-cn-beijing.aliyuncs.com/2020/03/15/7ae14963833fc.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-01-08T16:50:29+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年1月8日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%AD%A3%E5%88%99/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>正则</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/JavaScript/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>JavaScript</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2022/01/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=正则表达式 - ☆I wana be your hero☆&summary=正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法,以及 String 的 match、matchAll、replace、search 和 split 方法。正则表达式可用于所有文本搜索和文本替换的操作。==那就开始吧~== "
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2022/01/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=正则表达式 - ☆I wana be your hero☆&summary=正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法,以及 String 的 match、matchAll、replace、search 和 split 方法。正则表达式可用于所有文本搜索和文本替换的操作。==那就开始吧~== "
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2022/01/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&title=正则表达式 - ☆I wana be your hero☆&summary=正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法,以及 String 的 match、matchAll、replace、search 和 split 方法。正则表达式可用于所有文本搜索和文本替换的操作。==那就开始吧~== "
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAFYCAAAAAAzB7ucAAAEb0lEQVR42u3ay5YcOQgFwPr/n7b39umTcEHK8kxoZ1c+pCAXQPP5ZR1ZHwRgwVpgwYK1wF6B/YTrrwc2f//zuun/p79X91n1AAsWLFiwYMGCBXsXtpwAP1zfPcj279UP4afnTj3AggULFixYsGDBvgPbTazTxH9aYFSBqvtf8wALFixYsGDBggX7T8FuNaDT66YBAAsWLFiwYMGCBfv/hk0HItIBjW5BMQ0UWLBgwYIFCxYs2O+EbQ8ohBvfOljaOP/6SRiwYMGCBQsWLFiwJdjumjaOv/3fsQdYsGDBggULFizYK7DT1U3Ypw3ybmHQLRDGHmDBggULFixYsGCvwKYJcvdg01WFT+9bOz9YsGDBggULFizYq7Bpovx0kG4g0gZ1twCoBqI7QAIWLFiwYMGCBQv2Lmz6wG5C3gXdun5aIKw3usGCBQsWLFiwYMGuwE4HF7YHJNIDVwuLrQ/nWOUFFixYsGDBggULdtSPTRvQp+5LG9XdDyg+F1iwYMGCBQsWLNgrsKcb2ekBpgVIWgCMG+9gwYIFCxYsWLBgX4GdNrK3AzUF6RYm3X39OLABFixYsGDBggUL9ihsdQAi3eD2QbqFwnQQBCxYsGDBggULFux3wm4NVKSN8O3Bi62Axh8OWLBgwYIFCxYs2Kuw2w3trULj1D674OWCAyxYsGDBggULFuwV2LQQmN43TdS3A54G5PEvCGDBggULFixYsGCPwG4PLlQPXl3d550KZFx5gQULFixYsGDBgj0CW02Qq8Bbje5uor8VkGngwYIFCxYsWLBgwd6Brb5gK/FPC49uIdAN7LSBDxYsWLBgwYIFC/YubPfBaUK/NRhRhZsCxYUGWLBgwYIFCxYs2CuwaUN5C2y70T0d0Jg2wsGCBQsWLFiwYMF+B2y3ANhK8NOBjq33xoEDCxYsWLBgwYIFewX2dGM5Tbi33rvduG8PbIAFCxYsWLBgwYI9CtsFnQ5CdIHTwiJtjHcLB7BgwYIFCxYsWLDfAZsm6tPG+LQA2RrsiBvhYMGCBQsWLFiwYK/CbiXk1UIgDWhaaEwb7eUPCSxYsGDBggULFuwrsNNGchcsLTDSQmE68PF4HrBgwYIFCxYsWLCvwE4T961AdBP+6X3d/fzoAxYsWLBgwYIFC/YV2DRRTuHTgY3qPrcb8I/nBwsWLFiwYMGCBfsq7NMBtwaJuwn5OsRwX2DBggULFixYsGDfgZ2uLsj2YEYaiPS5j88HCxYsWLBgwYIFewX2VAGwNgBRLAC2GujTgRKwYMGCBQsWLFiwd2GnBcEUtFtAdAdFpgMmcYEAFixYsGDBggUL9grsqQR6OmhRBe0G4DNc5QIBLFiwYMGCBQsW7FfDpgXEtEBIG9/dD+HxvWDBggULFixYsGD/U7DTxnQ6sDFttLcDChYsWLBgwYIFC/YV2GnDOQWYwk4b49NGPliwYMGCBQsWLNh3YNNEOW1MTwN0rFE9LBTAggULFixYsGDB3oG1dhdYsGAtsGDBWmCPrt8T7hhcC7QC1gAAAABJRU5ErkJggg==">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
+          
+            href="https://t.me/share/url?url=http://suzhigao66.top/2022/01/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&text=正则表达式 - ☆I wana be your hero☆"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/telegram.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2022/01/07/I'mBack/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>I'm back!!!</p>
+                <p class='content'>我回来了
+好好学习好好运动好好生活</p>
+              </a>
+            
+            
+              <a class='next' href='/2021/07/23/just-saying/'>
+                <p class='title'>暂更博文一段时间<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>唠唠叨叨  好久没有更新博客了，想着发篇博客说明下也拖了好久（拖延癌(╥﹏╥)）  由于备战考研所以要暂停更新博客一段时间。羊哥说得挺好一句话，学习不在入而在于出。在自己博客，公众号等平台发布自...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '正则表达式',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-text">语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用字符串方法"><span class="toc-text">使用字符串方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#search-方法"><span class="toc-text">search()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#replace"><span class="toc-text">replace()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#split"><span class="toc-text">split()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#match"><span class="toc-text">match()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-RegExp-对象"><span class="toc-text">使用 RegExp 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#test"><span class="toc-text">test()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exec"><span class="toc-text">exec()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式修饰符"><span class="toc-text">正则表达式修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式模式"><span class="toc-text">正则表达式模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#括号"><span class="toc-text">括号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元字符"><span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#量词"><span class="toc-text">量词</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#小练习"><span class="toc-text">小练习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='2446759246'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1763489853@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/suzhigao"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://weibo.com/5275904826/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1"
+                class="social fab fa-weibo flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://twitter.com/suzhigao66"
+                class="social fab fa-twitter flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "JyjycFelXOfRDYATX2crQgk8-gzGzoHsz",
+    appKey: "lVApYqsWdHdwFztordYVEdCi",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":120,"height":210},"mobile":{"show":true},"react":{"opacity":0.6}});</script></body>
+</html>
