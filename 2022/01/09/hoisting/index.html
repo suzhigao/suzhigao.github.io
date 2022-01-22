@@ -16,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>变量提升与函数作用域 - ☆I wana be your hero☆</title>
+    <title>作用域与声明提升 - ☆I wana be your hero☆</title>
   
     <meta name="keywords" content="JavaScript,前端">
   
@@ -348,7 +348,7 @@
           
   <h1 class="title">
     <a href="/2022/01/09/hoisting/">
-      变量提升与函数作用域
+      作用域与声明提升
     </a>
   </h1>
 
@@ -402,7 +402,43 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          
+          <h2 id="一-作用域"><a href="#一-作用域" class="headerlink" title="一.作用域"></a>一.作用域</h2><p>作用域是可访问变量的集合，简单来说就是变量的作用范围。在JavaScript中作用域分为全局作用域和函数作用域。</p>
+<h4 id="1-全局作用域"><a href="#1-全局作用域" class="headerlink" title="1.全局作用域"></a>1.全局作用域</h4><p>直接在script标签中编写的代码都运行在全局作用域中。</p>
+<p>全局作用域在打开页面时创建，在页面关闭时销毁。</p>
+<p>全局作用域中有一个全局对象window，window对象由浏览器提供，可以在页面中直接使用，它代表的是整个的浏览器的窗口。<br><img src="https://s4.ax1x.com/2022/01/22/7hP5GR.png" alt="image"></p>
+<p>在全局作用域中创建的变量都会作为window对象的属性保存,在全局作用域中创建的函数都会作为window对象的方法保存。</p>
+<p>在全局作用域中创建的变量和函数可以在页面的任意位置访问,在函数作用域中也可以访问到全局作用域的变量。</p>
+<p>尽量不要在全局中创建变量。</p>
+<h4 id="2-函数作用域"><a href="#2-函数作用域" class="headerlink" title="2.函数作用域"></a>2.函数作用域</h4><p>函数作用域是函数执行时创建的作用域，每次调用函数都会创建一个新的函数作用域。</p>
+<p>函数作用域在函数执行时创建，在函数执行结束时销毁。</p>
+<p>在函数作用域中创建的变量，不能在全局中访问。</p>
+<p>当在函数作用域中使用一个变量时，它会先在自身作用域中寻找，如果找到了则直接使用，如果没有找到则到上一级作用域中寻找，如果找到了则使用，找不到则继续向上找；若全局作用域也没有，则报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> ab = <span class="string">"safsa123"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> ab = <span class="string">"fs"</span>;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"ab = "</span> + ab);</span><br><span class="line">        &#125;</span><br><span class="line">        fun2(); <span class="comment">//输出 ab = fs</span></span><br><span class="line">    &#125;</span><br><span class="line">    fun(); <span class="comment">//输出 ab = fs</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://imgtu.com/i/7hPdaQ" target="_blank" rel="noopener"><img src="https://s4.ax1x.com/2022/01/22/7hPdaQ.png" alt="7hPdaQ.png"></a></p>
+<h2 id="二-声明提升"><a href="#二-声明提升" class="headerlink" title="二.声明提升"></a>二.声明提升</h2><p>在JavaScript中，函数与变量的声明可以提升到函数的最顶部。通俗地讲就是先上车后补票，先使用，后声明。</p>
+<h4 id="1-变量声明提升"><a href="#1-变量声明提升" class="headerlink" title="1.变量声明提升"></a>1.变量声明提升</h4><p><strong>在全局作用域中</strong>，使用var关键字声明的变量会在所有的代码执行之前被声明，但是不会赋值。因此下面代码输出”aa = undefined”</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">    &lt;title&gt;JavaScript_function&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        console.log("aa = " + aa); /</span><span class="regexp">/结果：aa = undefined</span></span><br><span class="line"><span class="regexp">        var aa = 6;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br></pre></td></tr></table></figure>
+<p>所以我们可以在变量声明前使用变量。但是不使用var关键字声明的变量不会被声明提前。正如下面将script中的代码改成这样则报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"aa = "</span> + aa); <span class="comment">//Uncaught ReferenceError: aa is not defined</span></span><br><span class="line">    aa = <span class="number">6</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>在函数作用域中</strong>，使用var关键字声明的变量会在函数所有的代码执行前被声明，如果没有使用var关键字声明变量，则变量会变成全局变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="number">99</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"c = "</span> + c); </span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">33</span>; </span><br><span class="line">&#125;</span><br><span class="line">fun3(); </span><br><span class="line"><span class="comment">//结果输出 c = undefined</span></span><br></pre></td></tr></table></figure>
+<p>对于上述代码，使用了var关键字声明变量，声明提前，相当于在“console.log(“c = “ + c);”之前执行“var c”，并未赋值，所以输出“c = undefined”</p>
+<p>下面换一种方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="number">99</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"c = "</span> + c);  <span class="comment">//-------①</span></span><br><span class="line">    c = <span class="number">33</span>; <span class="comment">//无声明提升</span></span><br><span class="line">    <span class="comment">// var c = 33; </span></span><br><span class="line">&#125;</span><br><span class="line">fun3(); <span class="comment">//输出 c = 99</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"全局输出c = "</span> + c); <span class="comment">//------②</span></span><br><span class="line"><span class="comment">//不用var则为全局变量,输出“c = 33”</span></span><br></pre></td></tr></table></figure>
+<p>对于上面这段代码，与前面不同fun3中的变量c没有用var声明。</p>
+<p>从代码逻辑来看首先执行fun3函数，当要执行①句时发现前面没有出现变量c，于是从上一级寻找，找到了c=99，最后输出c = 99；轮到执行②句时，由于fun3中的c没有var修饰，因此是全局变量，②句在全局输出，所以此时c的值为33。</p>
+<h4 id="2-函数声明提升"><a href="#2-函数声明提升" class="headerlink" title="2.函数声明提升"></a>2.函数声明提升</h4><p><strong>在全局作用域中</strong>，使用函数声明创建的函数（function fun(){}）,会在所有的代码执行之前被创建，也就是我们可以在函数声明前去调用函数，但是使用函数表达式(var fun = function(){})创建的函数没有该特性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span></span><br><span class="line">    &lt;title&gt;Document&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        fun();</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        function fun()&#123;</span></span><br><span class="line"><span class="regexp">            console.log("我是一个fun函数");</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br></pre></td></tr></table></figure>
+<p>函数声明会连通命名和函数体一起被提升至作用域顶部，对于以上代码毫无疑问输出的是“我是一个fun函数”， 但是若改成下面这种情况就报错。</p>
+<p>原因是下面这个例子被提升的仅仅是变量名fun2，至于它的定义依然停留在原处。因此在执行fun2()之前，作用域只知道fun2的命名，不知道它到底是什么，所以执行会报错（通常会是：undefined is not a function）。这叫做函数表达式（Function Expression），<strong>函数表达式只有命名会被提升，定义的函数体则不会。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    fun2();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我是一个fun2函数"</span>); <span class="comment">//报错</span></span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>在函数作用域中</strong>，使用函数声明创建的函数，会在所有的函数中的代码执行之前就被创建好了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>函数声明和变量声明总是会被解释器悄悄地被”提升”到方法体的最顶部。两者区别不大，两者的生命周期略有差异，都取决于处于函数作用域还是全局作用域。</p>
+
           
             <div class='article_footer'>
               
@@ -489,10 +525,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-01-10T11:19:25+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-01-22T18:34:10+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年1月10日</p>
+    <p>更新于：2022年1月22日</p>
   </a>
 </div>
 
@@ -519,7 +555,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2022/01/09/hoisting/&title=变量提升与函数作用域 - ☆I wana be your hero☆&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://suzhigao66.top/2022/01/09/hoisting/&title=作用域与声明提升 - ☆I wana be your hero☆&summary="
           
           >
           
@@ -531,7 +567,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2022/01/09/hoisting/&title=变量提升与函数作用域 - ☆I wana be your hero☆&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://suzhigao66.top/2022/01/09/hoisting/&title=作用域与声明提升 - ☆I wana be your hero☆&summary="
           
           >
           
@@ -543,7 +579,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2022/01/09/hoisting/&title=变量提升与函数作用域 - ☆I wana be your hero☆&summary="
+          href="http://service.weibo.com/share/share.php?url=http://suzhigao66.top/2022/01/09/hoisting/&title=作用域与声明提升 - ☆I wana be your hero☆&summary="
           
           >
           
@@ -565,7 +601,7 @@
       
         <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer"
           
-            href="https://t.me/share/url?url=http://suzhigao66.top/2022/01/09/hoisting/&text=变量提升与函数作用域 - ☆I wana be your hero☆"
+            href="https://t.me/share/url?url=http://suzhigao66.top/2022/01/09/hoisting/&text=作用域与声明提升 - ☆I wana be your hero☆"
           
           >
           
@@ -637,7 +673,7 @@
 
   <script>
     window.subData = {
-      title: '变量提升与函数作用域',
+      title: '作用域与声明提升',
       tools: true
     }
   </script>
@@ -653,6 +689,20 @@
     
 
 
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-作用域"><span class="toc-text">一.作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-全局作用域"><span class="toc-text">1.全局作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-函数作用域"><span class="toc-text">2.函数作用域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-声明提升"><span class="toc-text">二.声明提升</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-变量声明提升"><span class="toc-text">1.变量声明提升</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-函数声明提升"><span class="toc-text">2.函数声明提升</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </section>
 
 
   
