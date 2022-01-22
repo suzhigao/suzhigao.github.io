@@ -18,7 +18,7 @@
   
     <title>正则表达式 - ☆I wana be your hero☆</title>
   
-    <meta name="keywords" content="正则,JavaScript">
+    <meta name="keywords" content="计算机基础,正则,JavaScript,前端">
   
   
     <meta name="description" content="正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法,以及 String 的 match、matchAll、replace、search 和 split 方法。正则表达式可...">
@@ -412,14 +412,14 @@
 <p>结果：<br><code>6</code></p>
 <h4 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * replace 替换</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> p = <span class="string">'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(p.replace(<span class="string">"fox"</span>,<span class="string">"Monkey"</span>));</span><br></pre></td></tr></table></figure>
 <p>结果：<br><code>The quick brown Monkey jumps over the lazy dog. If the dog reacted, was it really lazy?</code></p>
-<h4 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    * split(): 切片，除去该参数,将分割后的字符串存储到数组中的String方法中</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">var</span> str = <span class="string">"1z3v3f4n5i6s"</span>;</span><br><span class="line">   <span class="keyword">var</span> result = str.split(<span class="regexp">/[0-9]/</span>);</span><br><span class="line">   <span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
+<h4 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        * split(): 切片，除去该参数,将分割后的字符串存储到数组中的String方法中</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="keyword">var</span> str = <span class="string">"1z3v3f4n5i6s"</span>;</span><br><span class="line">       <span class="keyword">var</span> result = str.split(<span class="regexp">/[0-9]/</span>);</span><br><span class="line">       <span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
 <p>结果：<br><code>[&#39;&#39;, &#39;z&#39;, &#39;v&#39;, &#39;f&#39;, &#39;n&#39;, &#39;i&#39;, &#39;s&#39;]</code></p>
-<h4 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    * match: 可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配</span></span><br><span class="line"><span class="comment">    */</span> </span><br><span class="line">   <span class="keyword">var</span> str = <span class="string">"The rain in SPAIN stays mainly in the plain"</span>; </span><br><span class="line"><span class="keyword">var</span> n = str.match(<span class="regexp">/ain/g</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        * match: 可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配</span></span><br><span class="line"><span class="comment">        */</span> </span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">"The rain in SPAIN stays mainly in the plain"</span>; </span><br><span class="line"> <span class="keyword">var</span> n = str.match(<span class="regexp">/ain/g</span>);</span><br></pre></td></tr></table></figure>
 <p>结果：<br><code>ain,ain,ain</code></p>
 <h3 id="使用-RegExp-对象"><a href="#使用-RegExp-对象" class="headerlink" title="使用 RegExp 对象"></a>使用 RegExp 对象</h3><p>在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象。</p>
-<h4 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    * test()：检测一个字符串是否匹配某个模式</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line">   <span class="built_in">document</span>.write(patt1.test(<span class="string">"The best things in life are free"</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">/*</span></span><br><span class="line"><span class="comment">       * test()：检测一个字符串是否匹配某个模式</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line">       <span class="built_in">document</span>.write(patt1.test(<span class="string">"The best things in life are free"</span>));</span><br></pre></td></tr></table></figure>
 <p>结果：<br><code>true</code></p>
-<h4 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * exec() </span></span><br><span class="line"><span class="comment"> * 方法用于检索字符串中的正则表达式的匹配</span></span><br><span class="line"><span class="comment"> * 该函数返回一个数组，其中存放匹配的结果,如果未找到匹配，则返回值为 null。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.exec(<span class="string">"The best things in life are free"</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * exec() </span></span><br><span class="line"><span class="comment"> * 方法用于检索字符串中的正则表达式的匹配</span></span><br><span class="line"><span class="comment"> * 该函数返回一个数组，其中存放匹配的结果,如果未找到匹配，则返回值为 null。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</span><br><span class="line"><span class="built_in">document</span>.write(patt1.exec(<span class="string">"The best things in life are free"</span>));</span><br></pre></td></tr></table></figure>
 <p>结果：<br><code>e</code></p>
 <h2 id="正则表达式修饰符"><a href="#正则表达式修饰符" class="headerlink" title="正则表达式修饰符"></a>正则表达式修饰符</h2><ul>
 <li>i : 执行对大小写不敏感的匹配。</li>
@@ -560,10 +560,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-01-08T20:32:03+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-01-10T11:20:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年1月8日</p>
+    <p>更新于：2022年1月10日</p>
   </a>
 </div>
 
@@ -572,7 +572,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%AD%A3%E5%88%99/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>正则</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/JavaScript/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>JavaScript</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>计算机基础</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%AD%A3%E5%88%99/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>正则</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/JavaScript/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>JavaScript</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>前端</p></a></div>
 
 
         
@@ -659,6 +659,11 @@
         
         
           <div class="prev-next">
+            
+              <a class='prev' href='/2022/01/09/hoisting/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>变量提升与函数作用域</p>
+                <p class='content'></p>
+              </a>
             
             
               <a class='next' href='/2022/01/06/I'mBack/'>
